@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.encrypt, .decrypt{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 25%;
+}
+
+button{
+    width: 100px;
+    height: 30px;
+}
+
+textarea{
+    height: 300px;
+    width: 500px;
+}
