@@ -1,5 +1,7 @@
 :root{
     --bodyBackground: black;
+    --encryptBtnBack: linear-gradient(to right,purple,blue);
+    --decryptBtnBack: linear-gradient(to right,green,blue);
 }
 
 *{
@@ -33,12 +35,22 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 4%;
+    padding: 4%; 
 }
 
 .encrypt, .decrypt{
     display: flex;
     flex-direction: column;
+}
+
+.enc{
+    background: var(--encryptBtnBack);
+    color: aliceblue;
+}
+
+.dec{
+    background: var(--decryptBtnBack);
+    color: aliceblue;
 }
 
 button{
@@ -47,12 +59,34 @@ button{
     border-radius: 23px;
     color: black;
     background-color: beige;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+button:before{
+    content: '';
+    position: absolute;
+    height: 70px;
+    width:10px;
+    background: #f3f3f3;
+    box-shadow: 0 0 10px #fff;
+    filter: blur(1px);
+    opacity: 0.9;
+    top: -30px;
+    transition: 0.5s;
+    transform: rotate(-25deg) translateX(-45px);
+}
+
+button:hover:before{
+    transform: rotate(-20deg) translate(110px, 45px);
+
 }
 
 textarea{
     height: 350px;
     width: 42rem;
-    background-color: #0d1117;;
+    background-color: #0d1117;
 }
 
 .switch {
