@@ -9,6 +9,25 @@
     background-color: var(--bodyBackground);
     color: beige;
 }
+.nav ul li a{
+    text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.logo {
+    float: left;
+}
+
+.how {
+    float: right;
+}
+
+.logo, .how {
+    margin: 10px;
+}
 
 .content{
     display: flex;
