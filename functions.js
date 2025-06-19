@@ -1,9 +1,9 @@
-// export function encrypter(string){
-//   const al = 'abcdefghijklmnopqrstuvwxyz';
-//   const shift = 'nopqrstuvwxyzabcdefghijklm';
-//   const rev = al.split('').reverse().join('');
-//   return string.replace(/[a-z]/gi, x => shift[al.indexOf(x)]).replace(/[a-z]/g, x => rev[al.indexOf(x)]);
-// }
+export function encrypter(string){
+  const al = 'abcdefghijklmnopqrstuvwxyz';
+  const shift = 'nopqrstuvwxyzabcdefghijklm';
+  const rev = al.split('').reverse().join('');
+  return string.replace(/[a-z]/gi, x => shift[al.indexOf(x)]).replace(/[a-z]/g, x => rev[al.indexOf(x)]);
+}
 
 
 export function rot13(str) {
@@ -46,4 +46,13 @@ export function oneDown(str) {
  const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
  const jibberish = 'zABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy';
  return typeof str !== 'string' ? "Input is not a string" : str.replace(/[a-zA-Z]/g, x => jibberish[alpha.indexOf(x)]);
+}
+
+export function encryptSubstitution (str) {
+    return str.replace(/./g, x => x.charCodeAt(0)+58);
+}
+
+export function decryptSubstitution (str) {
+    const word1 = str.match(/.{1,3}/g);
+     return word1.map(x => String.fromCharCode(x-58)).join('');
 }
