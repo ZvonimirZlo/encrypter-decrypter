@@ -108,7 +108,7 @@ textarea {
     font-size: 14px;
 }
 
-#city {
+#description {
     position: absolute;
     z-index: 1;
     right: 0;

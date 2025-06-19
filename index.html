@@ -13,12 +13,12 @@
         <ul>
             <li>
                 <a href="#" class="logo">LOGO</a>
-                <button class="how" onclick="showHideTextBox()">How it works?</button>
-                <textarea type="textbox" id="city">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis, minima quia reprehenderit et quis minus aliquam delectus, consectetur, doloremque illo! Atque animi eligendi labore maxime, nobis eaque temporibus officia?</textarea>
+                <button class="how" id="descBtn">How it works?</button>
+                <textarea name="description" id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis, minima quia reprehenderit et quis minus aliquam delectus, consectetur, doloremque illo! Atque animi eligendi labore maxime, nobis eaque temporibus officia?</textarea>
             </li>
         </ul>
     </nav>
-    <div class="content">
+    <form class="content" id="form">
         <div class="encrypt">
             <div class="switchEnc">
                 <button class="enc">ENCRYPT</button>
@@ -28,18 +28,18 @@
                 </label>
             </div>
             <textarea name="textarea"
-                id="textarea"></textarea>
+                id="textEnc"></textarea>
             <textarea name="textarea"
-                id="textarea"></textarea>
+                id="textEncOut"></textarea>
         </div>
         <div class="decrypt">
             <button class="dec">DECRYPT</button>
             <textarea name="textarea"
-                id="textarea"></textarea>
+                id="textDec"></textarea>
             <textarea name="textarea"
-                id="textarea"></textarea>
+                id="textDecOut"></textarea>
         </div>
-    </div>
+    </form>
     <footer class="footer">©2025 ZvonimirZlo
         <a href='https://github.com/ZvonimirZlo'>
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" fill="white" viewBox="0 0 16 16">
