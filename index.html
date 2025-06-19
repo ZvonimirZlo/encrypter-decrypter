@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Encrypter</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -27,15 +27,37 @@
                     <input type="checkbox" id="switch">
                     <span class="slider"></span>
                 </label>
+                <select name="ciphers" id="cipher-select" placeholder="Please choose an option">
+                    <option value="option">Please choose an option</option>
+                    <option value="alternating split">Alternating split</option>
+                    <option value="one down">One down</option>
+                    <option value="multi six">Multi six</option>
+                    <option value="vigenere">Vigenere</option>
+                    <option value="rot 13">Rot 13</option>
+                    <option value="rot 13.5">Rot 13.5</option>
+                </select>
             </div>
+
             <textarea id="textEnc" required></textarea>
             <textarea name="textarea" id="textEncOut"></textarea>
         </div>
-        <div class="decrypt">
-            <button class="dec" id="decryptBtn">DECRYPT</button>
+        <div class="encrypt">
+            <div class="switchEnc">
+                <button class="enc" id="encBtn">DECRYPT</button>
+                <select name="ciphers" id="cipher-select" placeholder="Please choose an option">
+                    <option value="option">Please choose an option</option>
+                    <option value="alternating split">Alternating split</option>
+                    <option value="one down">One down</option>
+                    <option value="multi six">Multi six</option>
+                    <option value="vigenere">Vigenere</option>
+                    <option value="rot 13">Rot 13</option>
+                    <option value="rot 13.5">Rot 13.5</option>
+                </select>
+            </div>
             <textarea name="textarea" id="textDec"></textarea>
             <textarea name="textarea" id="textDecOut"></textarea>
         </div>
+
     </form>
     <footer class="footer">©2025 ZvonimirZlo
         <a href='https://github.com/ZvonimirZlo'>

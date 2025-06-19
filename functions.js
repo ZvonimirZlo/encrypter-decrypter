@@ -53,6 +53,13 @@ export function encryptSubstitution (str) {
 }
 
 export function decryptSubstitution (str) {
-    const word1 = str.match(/.{1,3}/g);
-     return word1.map(x => String.fromCharCode(x-58)).join('');
+   return word.replace(/1?\d{2}/g, i => String.fromCharCode(+i-58));
+}
+
+export function encodeMultSix(str) {
+   return str.split('').map(x => x.charCodeAt(str) * 6).map(x => String.fromCharCode(x)).join('');
+}
+
+export function decodeMultSix(str) {
+   return str.split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
 }
