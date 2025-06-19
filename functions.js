@@ -15,3 +15,28 @@ const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
 export function reversedCipher (plaintext){
   return plaintext.split('').reverse().join('').split(' ').reverse().map(x => x.slice(1) + x.slice(0, 1)).join(' ');
 };
+
+export function encryptAlternatingSplit(text, n) {
+  if(!text || n <= 0) return text;
+let odd = text.split('').filter((x, idx) => idx % 2 !== 0);
+  let ev = text.split('').filter((x, idx) => idx % 2 === 0);
+
+ return encrypt([...odd,...ev].join(''), n = n - 1);
+};
+
+export function decryptAlternatingSplit(encryptedText, n) {
+   if(!encryptedText || n <= 0) return encryptedText;
+  let out = Array(encryptedText.length);
+  while(n--){
+  let c = 0;
+    for(let i = 1; i < encryptedText.length; i += 2){
+      out[i] = encryptedText[c++]
+    };
+    
+    for(let j = 0; j < encryptedText.length; j += 2){
+      out[j] = encryptedText[c++]
+    };
+      encryptedText = out.join('');
+  }
+  return encryptedText;
+}
