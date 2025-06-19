@@ -14,7 +14,8 @@
             <li>
                 <a href="#" class="logo">LOGO</a>
                 <button class="how" id="descBtn">How it works?</button>
-                <textarea name="description" id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis, minima quia reprehenderit et quis minus aliquam delectus, consectetur, doloremque illo! Atque animi eligendi labore maxime, nobis eaque temporibus officia?</textarea>
+                <textarea name="description"
+                    id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis, minima quia reprehenderit et quis minus aliquam delectus, consectetur, doloremque illo! Atque animi eligendi labore maxime, nobis eaque temporibus officia?</textarea>
             </li>
         </ul>
     </nav>
@@ -27,17 +28,13 @@
                     <span class="slider"></span>
                 </label>
             </div>
-            <textarea name="textarea"
-                id="textEnc"></textarea>
-            <textarea name="textarea"
-                id="textEncOut"></textarea>
+            <textarea id="textEnc" required></textarea>
+            <textarea name="textarea" id="textEncOut"></textarea>
         </div>
         <div class="decrypt">
             <button class="dec" id="decryptBtn">DECRYPT</button>
-            <textarea name="textarea"
-                id="textDec"></textarea>
-            <textarea name="textarea"
-                id="textDecOut"></textarea>
+            <textarea name="textarea" id="textDec"></textarea>
+            <textarea name="textarea" id="textDecOut"></textarea>
         </div>
     </form>
     <footer class="footer">©2025 ZvonimirZlo
@@ -48,7 +45,8 @@
             </svg>
         </a>
     </footer>
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js" defer></script>
+    <script type="module" src="functions.js"></script>
 </body>
 
 </html>
