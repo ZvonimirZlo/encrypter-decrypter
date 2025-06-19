@@ -5,6 +5,7 @@
 //   return string.replace(/[a-z]/gi, x => shift[al.indexOf(x)]).replace(/[a-z]/g, x => rev[al.indexOf(x)]);
 // }
 
+
 export function rot13(str) {
 const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
  const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -39,4 +40,10 @@ export function decryptAlternatingSplit(encryptedText, n) {
       encryptedText = out.join('');
   }
   return encryptedText;
+}
+
+export function oneDown(str) {
+ const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+ const jibberish = 'zABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy';
+ return typeof str !== 'string' ? "Input is not a string" : str.replace(/[a-zA-Z]/g, x => jibberish[alpha.indexOf(x)]);
 }
