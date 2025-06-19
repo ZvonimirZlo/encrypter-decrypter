@@ -1,59 +1,74 @@
-:root{
-    --bodyBackground: black;
-    --encryptBtnBack: linear-gradient(to right,purple,blue);
-    --decryptBtnBack: linear-gradient(to right,green,blue);
+:root {
+    --bodyBackground: #0d1117;
+    --encryptBtnBack: linear-gradient(to right, purple, blue);
+    --decryptBtnBack: linear-gradient(to right, green, blue);
+    --howBtnColor: linear-gradient(to right, orange, red);
+    --borderColor: rgb(59, 66, 44);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--bodyBackground);
-    color: beige;
 }
-.nav ul li a{
+
+body {
+    color: white;
+    background-color: var(--bodyBackground);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.nav ul li a {
     text-decoration: none;
 }
 
 ul {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 .logo {
     float: left;
 }
 
-.how {
+nav ul .how {
     float: right;
+    background: var(--howBtnColor);
+    color: #fff;
 }
 
-.logo, .how {
-    margin: 10px;
+
+.logo,
+.how {
+    margin: 5px 5px 0px 5px;
 }
 
-.content{
+.content {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 4%; 
+    padding: 4%;
+    margin: auto;
 }
 
-.encrypt, .decrypt{
+.encrypt,
+.decrypt {
     display: flex;
     flex-direction: column;
 }
 
-.enc{
+.enc {
     background: var(--encryptBtnBack);
     color: aliceblue;
 }
 
-.dec{
+.dec {
     background: var(--decryptBtnBack);
     color: aliceblue;
 }
 
-button{
+button {
     width: 120px;
     height: 35px;
     border-radius: 23px;
@@ -64,11 +79,11 @@ button{
     overflow: hidden;
 }
 
-button:before{
+button:before {
     content: '';
     position: absolute;
     height: 70px;
-    width:10px;
+    width: 10px;
     background: #f3f3f3;
     box-shadow: 0 0 10px #fff;
     filter: blur(1px);
@@ -78,95 +93,105 @@ button:before{
     transform: rotate(-25deg) translateX(-45px);
 }
 
-button:hover:before{
+button:hover:before {
     transform: rotate(-20deg) translate(110px, 45px);
-
 }
 
-textarea{
-    height: 350px;
+textarea {
+    height: 330px;
     width: 42rem;
-    background-color: #0d1117;
+    background-color: #0d1116;
+    color: #fff;
+    border: 1px solid var(--borderColor);
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+#city {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    margin-top: 5%;
 }
 
 .switch {
- position: relative;
- display: inline-block;
- width: 120px;
- height: 34px;
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 34px;
 }
 
 .switch input {
- display: none;
+    display: none;
 }
 
 .slider {
- position: absolute;
- cursor: pointer;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- background-color: #3C3C3C;
- -webkit-transition: .4s;
- transition: .4s;
- border-radius: 34px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #3C3C3C;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
 }
 
 .slider:before {
- position: absolute;
- content: "";
- height: 26px;
- width: 26px;
- left: 4px;
- bottom: 4px;
- background-color: white;
- -webkit-transition: .4s;
- transition: .4s;
- border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
 }
 
-input:checked + .slider {
- background-color: #0E6EB8;
+input:checked+.slider {
+    background-color: #0E6EB8;
 }
 
-input:focus + .slider {
- box-shadow: 0 0 1px #2196F3;
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
- -webkit-transform: translateX(26px);
- -ms-transform: translateX(26px);
- transform: translateX(85px);
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(85px);
 }
 
-/*------ ADDED CSS ---------*/
 .slider:after {
- content: 'HIDE METHOD';
- color: white;
- display: block;
- position: absolute;
- transform: translate(-50%,-50%);
- top: 50%;
- left: 53%;
- font-size: 10px;
- font-family: Verdana, sans-serif;
+    content: 'HIDE METHOD';
+    color: white;
+    display: block;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 53%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
 }
 
-input:checked + .slider:after {
- content: 'SHOW METHOD';
+input:checked+.slider:after {
+    content: 'SHOW METHOD';
 }
 
 .switchEnc {
     display: inline-flex;
 }
 
- .footer {
-     text-align: center;
-     color: rgb(234, 214, 214);
-     font-size: 12px;
-     bottom: 0;
-     position: absolute;
-     width: 100%;
-     height: 2.5rem;
- }
+.footer {
+    text-align: center;
+    color: rgb(234, 214, 214);
+    font-size: 12px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 2.5rem;
+}
