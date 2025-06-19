@@ -10,4 +10,8 @@ const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
  const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   const decrypt = (x) => rot[alpha.indexOf(x)];
   return str.replace(/[a-zA-Z0-9]/g, decrypt);
-}
+};
+
+export function reversedCipher (plaintext){
+  return plaintext.split('').reverse().join('').split(' ').reverse().map(x => x.slice(1) + x.slice(0, 1)).join(' ');
+};
