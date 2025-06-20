@@ -12,6 +12,15 @@ const encryptButton = document.getElementById('encBtn');
 const slider = document.getElementById('switch');
 const decryptButton = document.getElementById('decryptBtn');
 
+//Date object and instances needed to create correct time format
+const time = new Date();
+const year = time.getFullYear();
+const month = time.getMonth() + 1;
+const date = time.getDate();
+const hours = time.getHours();
+const minutes = time.getMinutes();
+const secs = time.getSeconds();
+
 // Shows/hides text box with instructions
 const showHideTextBox = () => {
     if (description.style.display === "none") {
@@ -27,13 +36,6 @@ descriptionButton.onclick = showHideTextBox;
 window.onload = () => {
    description.style.display = "none";
 }
-
-// function encrypter(string){
-//   const al = 'abcdefghijklmnopqrstuvwxyz';
-//   const shift = 'nopqrstuvwxyzabcdefghijklm';
-//   const rev = al.split('').reverse().join('');
-//   return string.replace(/[a-z]/gi, x => shift[al.indexOf(x)]).replace(/[a-z]/g, x => rev[al.indexOf(x)]);
-// }
 
 encryptButton.addEventListener('click', () => {console.log(encrypter(encryptTextBox.value))})
 console.log(encrypter(encryptTextBox.value));

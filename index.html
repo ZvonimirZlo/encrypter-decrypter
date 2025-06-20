@@ -27,7 +27,7 @@
                     <input type="checkbox" id="switch">
                     <span class="slider"></span>
                 </label>
-                <select name="ciphers" id="cipher-select" placeholder="Please choose an option">
+                <select name="ciphers" id="cipher-select" placeholder="Please choose an option" required>
                     <option value="option">Please choose an option</option>
                     <option value="alternating split">Alternating split</option>
                     <option value="one down">One down</option>
@@ -38,13 +38,13 @@
                 </select>
             </div>
 
-            <textarea id="textEnc" required></textarea>
+            <textarea id="textEnc"></textarea>
             <textarea name="textarea" id="textEncOut"></textarea>
         </div>
-        <div class="encrypt">
+        <div class="decrypt">
             <div class="switchEnc">
-                <button class="enc" id="encBtn">DECRYPT</button>
-                <select name="ciphers" id="cipher-select" placeholder="Please choose an option">
+                <button class="dec" id="decBtn">DECRYPT</button>
+                <select name="ciphers" id="cipher-select" placeholder="Please choose an option" required>
                     <option value="option">Please choose an option</option>
                     <option value="alternating split">Alternating split</option>
                     <option value="one down">One down</option>
