@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="remover()">
     <nav>
         <ul>
             <li>
@@ -19,7 +19,7 @@
             </li>
         </ul>
     </nav>
-    <form class="content" id="form">
+    <div class="content" id="form">
         <div class="encrypt">
             <div class="switchEnc">
                 <button class="enc" id="encBtn">ENCRYPT</button>
@@ -60,7 +60,7 @@
             <textarea name="textarea" id="textDecOut"></textarea>
         </div>
 
-    </form>
+    </div>
     <footer class="footer">©2025 ZvonimirZlo
         <a href='https://github.com/ZvonimirZlo'>
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" fill="white" viewBox="0 0 16 16">
@@ -69,8 +69,8 @@
             </svg>
         </a>
     </footer>
-    <script type="module" src="script.js" defer></script>
-    <script type="module" src="functions.js"></script>
+    <script src="script.js" defer></script>
+
 </body>
 
 </html>

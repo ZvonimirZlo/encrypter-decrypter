@@ -3,7 +3,7 @@
     --encryptBtnBack: linear-gradient(to right, purple, blue);
     --decryptBtnBack: linear-gradient(to right, green, blue);
     --howBtnColor: linear-gradient(to right, orange, red);
-    --borderColor: rgb(59, 66, 44);
+    --borderColor: rgb(120, 145, 66);
 }
 
 * {
@@ -74,7 +74,7 @@ button {
     height: 35px;
     border-radius: 23px;
     color: black;
-    background-color: beige;
+    background-color: #fff;
     font-weight: bold;
     position: relative;
     overflow: hidden;
@@ -121,6 +121,7 @@ select {
     background: #3C3C3C;
     color: #fff;
     border-radius: 5px;
+    border: 2px solid var(--borderColor)
 }
 
 #description {

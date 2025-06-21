@@ -1,5 +1,3 @@
-import { encrypter, rot13 } from "./functions.js";
-
 //Variables
 const form = document.getElementById('form')
 const descriptionButton = document.getElementById('descBtn');
@@ -10,7 +8,7 @@ const decryptTextBox = document.getElementById('textDec');
 const decryptOut = document.getElementById('textDecOut');
 const encryptButton = document.getElementById('encBtn');
 const slider = document.getElementById('switch');
-const decryptButton = document.getElementById('decryptBtn');
+const decryptButton = document.getElementById('decBtn');
 const encryptSelect = document.getElementById('encrypter-select');
 const decryptSelect = document.getElementById('decrypter-select');
 const inputOne = document.getElementById('number1');
@@ -28,21 +26,21 @@ const secs = time.getSeconds();
 //Time format 
 const timeFormat = `${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
 
-// Shows/hides text box with instructions
+
+//Shows inputOne 
+document.body.addEventListener('mousemove', () => {
+    encryptSelect.value === 'vigenere' || encryptSelect.value === 'alternating split' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
+});
+
+//Shows inputTwo 
+document.body.addEventListener('mousemove', () => {
+    decryptSelect.value === 'vigenere' || decryptSelect.value === 'alternating split' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
+})
+
+// Shows/hides description
 const showHideTextBox = () => {
     description.style.display === "none" ? description.style.display = "block" : description.style.display = "none";
 }
-
-//Shows inputOne only for Vigenere cipher
-document.body.addEventListener('mousemove', () => {
-    encryptSelect.value === 'vigenere' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
-})
-
-//Shows inputTwo only for Vigenere cipher
-document.body.addEventListener('mousemove', () => {
-    decryptSelect.value === 'vigenere' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
-})
-
 
 //Shows description 
 descriptionButton.onclick = showHideTextBox;
@@ -53,16 +51,82 @@ window.onload = () => {
 }
 
 
+//**ENCRYPTION HANDLER**
+const encrypt = () => {
+    console.log(decryptSelect.value)
+    if (encryptSelect.value === 'alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}]`;
+}
+encryptButton.onclick = encrypt;
 
-encryptButton.addEventListener('click', () => {
-    if (encryptSelect.value === 'rot 13') encryptOut.innerHTML = `${rot13(encryptTextBox.value)} [Created: ${timeFormat}]`;
-})
 
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // showHideInputs()
-})
+// **DECRYPTION HANDLER**
+const decrypt = () => {
+    if (decryptSelect.value === 'alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}]`;
+
+}
+decryptButton.onclick = decrypt;
+
+// function encrypter(string) {
+//     const al = 'abcdefghijklmnopqrstuvwxyz';
+//     const shift = 'nopqrstuvwxyzabcdefghijklm';
+//     const rev = al.split('').reverse().join('');
+//     return string.replace(/[a-z]/gi, x => shift[al.indexOf(x)]).replace(/[a-z]/g, x => rev[al.indexOf(x)]);
+// }
+
+
+function rot13(str) {
+    const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
+    const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const decrypt = (x) => rot[alpha.indexOf(x)];
+    return str.replace(/[a-zA-Z0-9]/g, decrypt);
+};
+
+function reversedCipher(plaintext) {
+    return plaintext.split('').reverse().join('').split(' ').reverse().map(x => x.slice(1) + x.slice(0, 1)).join(' ');
+};
+
+//Alternating split encrypt handler
+function encryptAltSplit(text, n) {
+    n = inputOne.value;
+    for (let i = 0; i < n; i++) {
+        text = text && text.replace(/.(.|$)/g, '$1') + text.replace(/(.)./g, '$1')
+    }
+    return text;
+};
+
+//Alternating split decrypt handler
+function decryptAltSplit(text, n) {
+    n = inputTwo.value;
+    let l = text && text.length / 2 | 0
+    for (let i = 0; i < n; i++) {
+        text = text.slice(l).replace(/./g, (_, i) => _ + (i < l ? text[i] : ''))
+    }
+    return text;
+}
+
+function oneDown(str) {
+    const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const jibberish = 'zABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy';
+    return typeof str !== 'string' ? "Input is not a string" : str.replace(/[a-zA-Z]/g, x => jibberish[alpha.indexOf(x)]);
+}
+
+function encryptSubstitution(str) {
+    return str.replace(/./g, x => x.charCodeAt(0) + 58);
+}
+
+function decryptSubstitution(str) {
+    return word.replace(/1?\d{2}/g, i => String.fromCharCode(+i - 58));
+}
+
+function encodeMultSix(str) {
+    return str.split('').map(x => x.charCodeAt(str) * 6).map(x => String.fromCharCode(x)).join('');
+}
+
+function decodeMultSix(str) {
+    return str.split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
+}
+
 
 
 
