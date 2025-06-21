@@ -1,4 +1,4 @@
-import { encrypter } from "./functions.js";
+import { encrypter, rot13 } from "./functions.js";
 
 //Variables
 const form = document.getElementById('form')
@@ -13,6 +13,8 @@ const slider = document.getElementById('switch');
 const decryptButton = document.getElementById('decryptBtn');
 const encryptSelect = document.getElementById('encrypter-select');
 const decryptSelect = document.getElementById('decrypter-select');
+const inputOne = document.getElementById('number1');
+const inputTwo = document.getElementById('number2');
 
 //Date object and instances needed to create correct time format
 const time = new Date();
@@ -28,12 +30,15 @@ const timeFormat = `${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
 
 // Shows/hides text box with instructions
 const showHideTextBox = () => {
-    if (description.style.display === "none") {
-        description.style.display = "block";
-    } else {
-        description.style.display = "none";
-    }
+ description.style.display === "none" ?  description.style.display = "block" : description.style.display = "none";
 }
+
+const showHideInputs = () => {
+  encryptSelect.value === 'vigenere' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
+  decryptSelect.value === 'vigenere' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
+}
+
+
 
 descriptionButton.onclick = showHideTextBox;
 
@@ -42,9 +47,18 @@ window.onload = () => {
    description.style.display = "none";
 }
 
-encryptButton.addEventListener('click', () => {console.log(encrypter(encryptTextBox.value))})
-encryptButton.onclick = encrypter
+
+
+encryptButton.addEventListener('click', () => {
+ if(encryptSelect.value === 'rot 13') encryptOut.innerHTML = `${rot13(encryptTextBox.value)} [Created: ${timeFormat}]`;
+})
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    showHideInputs()
 })
+
+
+
+

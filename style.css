@@ -116,6 +116,13 @@ select {
     height: 33px;
 }
 
+.num {
+    width: 44px;
+    background: rgb(121, 117, 117);
+    color: #fff;
+    border-radius: 5px;
+}
+
 #description {
     position: absolute;
     z-index: 1;
