@@ -11,6 +11,8 @@ const decryptOut = document.getElementById('textDecOut');
 const encryptButton = document.getElementById('encBtn');
 const slider = document.getElementById('switch');
 const decryptButton = document.getElementById('decryptBtn');
+const encryptSelect = document.getElementById('encrypter-select');
+const decryptSelect = document.getElementById('decrypter-select');
 
 //Date object and instances needed to create correct time format
 const time = new Date();
@@ -20,6 +22,9 @@ const date = time.getDate();
 const hours = time.getHours();
 const minutes = time.getMinutes();
 const secs = time.getSeconds();
+
+//Time format 
+const timeFormat = `${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
 
 // Shows/hides text box with instructions
 const showHideTextBox = () => {
@@ -38,7 +43,6 @@ window.onload = () => {
 }
 
 encryptButton.addEventListener('click', () => {console.log(encrypter(encryptTextBox.value))})
-console.log(encrypter(encryptTextBox.value));
 encryptButton.onclick = encrypter
 
 form.addEventListener('submit', (e) => {
