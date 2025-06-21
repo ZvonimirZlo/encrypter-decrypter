@@ -1,5 +1,4 @@
 //Variables
-const form = document.getElementById('form')
 const descriptionButton = document.getElementById('descBtn');
 const description = document.getElementById("description");
 const encryptTextBox = document.getElementById('textEnc')
@@ -55,6 +54,9 @@ window.onload = () => {
 const encrypt = () => {
     console.log(decryptSelect.value)
     if (encryptSelect.value === 'alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}]`;
+    else if(encryptSelect.value === 'substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}]`;
+console.log(encryptSelect.value);
+
 }
 encryptButton.onclick = encrypt;
 
@@ -63,6 +65,7 @@ encryptButton.onclick = encrypt;
 // **DECRYPTION HANDLER**
 const decrypt = () => {
     if (decryptSelect.value === 'alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}]`;
+    else if(decryptSelect.value === 'substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}]`;
 
 }
 decryptButton.onclick = decrypt;
@@ -108,7 +111,13 @@ function decryptAltSplit(text, n) {
 function oneDown(str) {
     const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     const jibberish = 'zABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy';
-    return typeof str !== 'string' ? "Input is not a string" : str.replace(/[a-zA-Z]/g, x => jibberish[alpha.indexOf(x)]);
+    return str.replace(/[a-zA-Z]/g, x => jibberish[alpha.indexOf(x)]);
+}
+
+function oneDownDec(str) {
+    const jibberish = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const alpha = 'zABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy';
+    return str.replace(/[a-zA-Z]/g, x => alpha[jibberish.indexOf(x)]);
 }
 
 function encryptSubstitution(str) {
@@ -116,7 +125,7 @@ function encryptSubstitution(str) {
 }
 
 function decryptSubstitution(str) {
-    return word.replace(/1?\d{2}/g, i => String.fromCharCode(+i - 58));
+    return str.replace(/1?\d{2}/g, i => String.fromCharCode(+i - 58));
 }
 
 function encodeMultSix(str) {
