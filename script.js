@@ -30,33 +30,38 @@ const timeFormat = `${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
 
 // Shows/hides text box with instructions
 const showHideTextBox = () => {
- description.style.display === "none" ?  description.style.display = "block" : description.style.display = "none";
+    description.style.display === "none" ? description.style.display = "block" : description.style.display = "none";
 }
 
-const showHideInputs = () => {
-  encryptSelect.value === 'vigenere' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
-  decryptSelect.value === 'vigenere' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
-}
+//Shows inputOne only for Vigenere cipher
+document.body.addEventListener('mousemove', () => {
+    encryptSelect.value === 'vigenere' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
+})
+
+//Shows inputTwo only for Vigenere cipher
+document.body.addEventListener('mousemove', () => {
+    decryptSelect.value === 'vigenere' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
+})
 
 
-
+//Shows description 
 descriptionButton.onclick = showHideTextBox;
 
 // Hides description text box on page reload
 window.onload = () => {
-   description.style.display = "none";
+    description.style.display = "none";
 }
 
 
 
 encryptButton.addEventListener('click', () => {
- if(encryptSelect.value === 'rot 13') encryptOut.innerHTML = `${rot13(encryptTextBox.value)} [Created: ${timeFormat}]`;
+    if (encryptSelect.value === 'rot 13') encryptOut.innerHTML = `${rot13(encryptTextBox.value)} [Created: ${timeFormat}]`;
 })
 
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    showHideInputs()
+    // showHideInputs()
 })
 
 
