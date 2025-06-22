@@ -49,17 +49,17 @@ window.onload = () => {
 }
 
 const showHideMethodEnc = () => {
- const slider = document.getElementById('switch');
-  return slider.checked === true ? `Method: ${encryptSelect.value} ${inputOne.value}` : `Method hidden!`; 
+    const slider = document.getElementById('switch');
+    return slider.checked === true ? `Method: ${encryptSelect.value} ${inputOne.value}` : `Method hidden!`;
 }
 
 
 //**ENCRYPTION HANDLER**
 const encrypt = () => {
     if (encryptSelect.value === 'alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if(encryptSelect.value === 'substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if(encryptSelect.value === 'multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-
+    else if (encryptSelect.value === 'substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (encryptSelect.value === 'multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (encryptSelect.value === 'vigenere') encryptOut.innerHTML = `${encryptVin(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 
 }
 encryptButton.onclick = encrypt;
@@ -69,8 +69,9 @@ encryptButton.onclick = encrypt;
 // **DECRYPTION HANDLER**
 const decrypt = () => {
     if (decryptSelect.value === 'alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if(decryptSelect.value === 'substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if(decryptSelect.value === 'multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'vigenere') decryptOut.innerHTML = `${decryptVin(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
 decryptButton.onclick = decrypt;
 
@@ -83,13 +84,13 @@ function rot13(str) {
 
 function reversedCipher(plaintext) {
     return plaintext
-    .split('')
-    .reverse()
-    .join('')
-    .split(' ')
-    .reverse()
-    .map(x => x.slice(1) + x.slice(0, 1))
-    .join(' ');
+        .split('')
+        .reverse()
+        .join('')
+        .split(' ')
+        .reverse()
+        .map(x => x.slice(1) + x.slice(0, 1))
+        .join(' ');
 };
 
 //Alternating split encrypt handler
@@ -103,7 +104,7 @@ function encryptAltSplit(text, n) {
 
 //Alternating split decrypt handler
 function decryptAltSplit(text, n) {
-    if(!text || n <= 0) alert('Something') ;
+    if (!text || n <= 0) alert('Something');
     n = inputTwo.value;
     let l = text && text.length / 2 | 0
     for (let i = 0; i < n; i++) {
@@ -128,6 +129,77 @@ function encodeMultSix(str) {
 function decodeMultSix(str) {
     return str.split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
 }
+
+//Helper functions
+function isUpperCase(letter) {
+    var l = letter.charCodeAt();
+    if (l >= 65 && l <= 90) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+function isLowerCase(letter) {
+    var l = letter.charCodeAt();
+    if (l >= 97 && l <= 122) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+
+function encryptVin(text, key) {
+    key = inputOne.value;
+    let cypher = "";
+    for (let i = 0, j = 0; i < text.length; i++) {
+        let currentLetter = text[i];
+
+        if (isUpperCase(currentLetter)) {
+            const upperLetter = ((currentLetter.charCodeAt() - 65) + (key[j % key.length].toUpperCase().charCodeAt() - 65)) % 26;
+            cypher += String.fromCharCode(upperLetter + 65);
+            j++;
+        } else if (isLowerCase(currentLetter)) {
+            const lowerLetter = ((currentLetter.charCodeAt() - 97) + (key[j % key.length].toLowerCase().charCodeAt() - 97)) % 26;
+            cypher += String.fromCharCode(lowerLetter + 97);
+            j++;
+        } else {
+            cypher += currentLetter;
+        }
+    }
+    return cypher;
+};
+
+function decryptVin(text, keyW) {
+    keyW = inputTwo.value;
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const input = text.toUpperCase();
+    const key = keyW.toUpperCase();
+
+    let output = "";
+    let keyIndex = 0;
+
+    for (let i = 0; i < input.length; i++) {
+        const char = input[i];
+        if (alphabet.includes(char)) {
+            const charIndex = alphabet.indexOf(char);
+            const keyCharIndex = alphabet.indexOf(key[keyIndex % key.length]);
+            const encryptedCharIndex = (charIndex - keyCharIndex + alphabet.length) % alphabet.length;
+
+            output += alphabet[encryptedCharIndex];
+            keyIndex++;
+        } else {
+            output += char;
+        }
+    }
+
+    return output;
+}
+
+
+
+
 
 
 
