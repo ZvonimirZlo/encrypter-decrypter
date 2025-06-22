@@ -6,7 +6,6 @@ const encryptOut = document.getElementById('textEncOut');
 const decryptTextBox = document.getElementById('textDec');
 const decryptOut = document.getElementById('textDecOut');
 const encryptButton = document.getElementById('encBtn');
-const slider = document.getElementById('switch');
 const decryptButton = document.getElementById('decBtn');
 const encryptSelect = document.getElementById('encrypter-select');
 const decryptSelect = document.getElementById('decrypter-select');
@@ -49,13 +48,18 @@ window.onload = () => {
     description.style.display = "none";
 }
 
+const showHideMethodEnc = () => {
+ const slider = document.getElementById('switch');
+  return slider.checked === true ? `Method: ${encryptSelect.value} ${inputOne.value}` : `Method hidden!`; 
+}
+
 
 //**ENCRYPTION HANDLER**
 const encrypt = () => {
-    console.log(decryptSelect.value)
-    if (encryptSelect.value === 'alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}]`;
-    else if(encryptSelect.value === 'substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}]`;
-console.log(encryptSelect.value);
+    if (encryptSelect.value === 'alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if(encryptSelect.value === 'substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if(encryptSelect.value === 'multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+
 
 }
 encryptButton.onclick = encrypt;
@@ -64,19 +68,11 @@ encryptButton.onclick = encrypt;
 
 // **DECRYPTION HANDLER**
 const decrypt = () => {
-    if (decryptSelect.value === 'alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}]`;
-    else if(decryptSelect.value === 'substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}]`;
-
+    if (decryptSelect.value === 'alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if(decryptSelect.value === 'substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if(decryptSelect.value === 'multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
 decryptButton.onclick = decrypt;
-
-// function encrypter(string) {
-//     const al = 'abcdefghijklmnopqrstuvwxyz';
-//     const shift = 'nopqrstuvwxyzabcdefghijklm';
-//     const rev = al.split('').reverse().join('');
-//     return string.replace(/[a-z]/gi, x => shift[al.indexOf(x)]).replace(/[a-z]/g, x => rev[al.indexOf(x)]);
-// }
-
 
 function rot13(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
@@ -86,7 +82,14 @@ function rot13(str) {
 };
 
 function reversedCipher(plaintext) {
-    return plaintext.split('').reverse().join('').split(' ').reverse().map(x => x.slice(1) + x.slice(0, 1)).join(' ');
+    return plaintext
+    .split('')
+    .reverse()
+    .join('')
+    .split(' ')
+    .reverse()
+    .map(x => x.slice(1) + x.slice(0, 1))
+    .join(' ');
 };
 
 //Alternating split encrypt handler
@@ -100,6 +103,7 @@ function encryptAltSplit(text, n) {
 
 //Alternating split decrypt handler
 function decryptAltSplit(text, n) {
+    if(!text || n <= 0) alert('Something') ;
     n = inputTwo.value;
     let l = text && text.length / 2 | 0
     for (let i = 0; i < n; i++) {
@@ -108,17 +112,6 @@ function decryptAltSplit(text, n) {
     return text;
 }
 
-function oneDown(str) {
-    const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const jibberish = 'zABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy';
-    return str.replace(/[a-zA-Z]/g, x => jibberish[alpha.indexOf(x)]);
-}
-
-function oneDownDec(str) {
-    const jibberish = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const alpha = 'zABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy';
-    return str.replace(/[a-zA-Z]/g, x => alpha[jibberish.indexOf(x)]);
-}
 
 function encryptSubstitution(str) {
     return str.replace(/./g, x => x.charCodeAt(0) + 58);
