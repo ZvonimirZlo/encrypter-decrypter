@@ -35,6 +35,7 @@ document.body.addEventListener('mousemove', () => {
     decryptSelect.value === 'vigenere' || decryptSelect.value === 'alternating split' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
 })
 
+
 // Shows/hides description
 const showHideTextBox = () => {
     description.style.display === "none" ? description.style.display = "block" : description.style.display = "none";
@@ -48,6 +49,7 @@ window.onload = () => {
     description.style.display = "none";
 }
 
+// Showing/hiding encryption method depending on switcher position
 const showHideMethodEnc = () => {
     const slider = document.getElementById('switch');
     return slider.checked === true ? `Method: ${encryptSelect.value} ${inputOne.value}` : `Method hidden!`;
@@ -60,7 +62,7 @@ const encrypt = () => {
     else if (encryptSelect.value === 'substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'vigenere') encryptOut.innerHTML = `${encryptVin(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-
+    else if (encryptSelect.value === 'rot 13') encryptOut.innerHTML = `${rot13encrypter(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
 encryptButton.onclick = encrypt;
 
@@ -72,13 +74,21 @@ const decrypt = () => {
     else if (decryptSelect.value === 'substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'vigenere') decryptOut.innerHTML = `${decryptVin(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'rot 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
 decryptButton.onclick = decrypt;
 
-function rot13(str) {
+function rot13encrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const decrypt = (x) => rot[alpha.indexOf(x)];
+    return str.replace(/[a-zA-Z0-9]/g, decrypt);
+};
+
+function rot13decrypter(str) {
+    const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
+    const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const decrypt = (x) => alpha[rot.indexOf(x)];
     return str.replace(/[a-zA-Z0-9]/g, decrypt);
 };
 
@@ -131,7 +141,7 @@ function decodeMultSix(str) {
 }
 
 //Helper functions
-function isUpperCase(letter) {
+const isUpperCase = (letter) => {
     var l = letter.charCodeAt();
     if (l >= 65 && l <= 90) {
         return true;
@@ -140,7 +150,7 @@ function isUpperCase(letter) {
     }
 };
 
-function isLowerCase(letter) {
+const isLowerCase = (letter) => {
     var l = letter.charCodeAt();
     if (l >= 97 && l <= 122) {
         return true;
