@@ -28,12 +28,12 @@ const dayNames = ["Sunday", "Monday", "Tuesday", 'Wednesday', 'Thursday', 'Frida
 const timeFormat = `${dayNames[day]} ${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
 
 
-//Shows inputOne 
+//Shows inputOne if Vigenere cipher or Alternating split 
 document.body.addEventListener('mousemove', () => {
     encryptSelect.value === 'vigenere' || encryptSelect.value === 'alternating split' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
 });
 
-//Shows inputTwo 
+//Shows inputTwo if Vigenere cipher or Alternating split 
 document.body.addEventListener('mousemove', () => {
     decryptSelect.value === 'vigenere' || decryptSelect.value === 'alternating split' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
 })
