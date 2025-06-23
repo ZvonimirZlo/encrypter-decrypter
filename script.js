@@ -16,13 +16,16 @@ const inputTwo = document.getElementById('number2');
 const time = new Date();
 const year = time.getFullYear();
 const month = time.getMonth() + 1;
+const day = time.getDay();
 const date = time.getDate();
 const hours = time.getHours();
 const minutes = time.getMinutes();
 const secs = time.getSeconds();
 
+const dayNames = ["Sunday", "Monday", "Tuesday", 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 //Time format 
-const timeFormat = `${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
+const timeFormat = `${dayNames[day]} ${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
 
 
 //Shows inputOne 
@@ -78,6 +81,7 @@ const decrypt = () => {
 }
 decryptButton.onclick = decrypt;
 
+//ROT 13 encrypt handler
 function rot13encrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -85,6 +89,7 @@ function rot13encrypter(str) {
     return str.replace(/[a-zA-Z0-9]/g, decrypt);
 };
 
+//ROT 13 decrypt handler
 function rot13decrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -92,16 +97,6 @@ function rot13decrypter(str) {
     return str.replace(/[a-zA-Z0-9]/g, decrypt);
 };
 
-function reversedCipher(plaintext) {
-    return plaintext
-        .split('')
-        .reverse()
-        .join('')
-        .split(' ')
-        .reverse()
-        .map(x => x.slice(1) + x.slice(0, 1))
-        .join(' ');
-};
 
 //Alternating split encrypt handler
 function encryptAltSplit(text, n) {
@@ -123,19 +118,22 @@ function decryptAltSplit(text, n) {
     return text;
 }
 
-
+//Substitution encrypt handler
 function encryptSubstitution(str) {
     return str.replace(/./g, x => x.charCodeAt(0) + 58);
 }
 
+//Substitution decrypt handler
 function decryptSubstitution(str) {
     return str.replace(/1?\d{2}/g, i => String.fromCharCode(+i - 58));
 }
 
+//Multi six encrypt handler
 function encodeMultSix(str) {
     return str.split('').map(x => x.charCodeAt(str) * 6).map(x => String.fromCharCode(x)).join('');
 }
 
+//Multi six decrypt handler
 function decodeMultSix(str) {
     return str.split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
 }
@@ -159,7 +157,7 @@ const isLowerCase = (letter) => {
     }
 };
 
-
+//Vigenere cipher encrypt handler
 function encryptVin(text, key) {
     key = inputOne.value;
     let cypher = "";
@@ -181,6 +179,7 @@ function encryptVin(text, key) {
     return cypher;
 };
 
+//Vigenere cipher decrypt handler
 function decryptVin(text, keyW) {
     keyW = inputTwo.value;
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -203,7 +202,6 @@ function decryptVin(text, keyW) {
             output += char;
         }
     }
-
     return output;
 }
 
