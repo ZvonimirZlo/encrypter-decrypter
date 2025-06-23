@@ -259,7 +259,7 @@ const toRomeHandler = (integer) => {
 
 //Roman to number handler
 const fromRomeHandler = (romanNum) => {
-    const obj = {
+    const map = {
         I: 1,
         IV: 4,
         V: 5,
@@ -275,7 +275,7 @@ const fromRomeHandler = (romanNum) => {
         M: 1000
     };
 
-    return romanNum.split('').reduce((acc, curr, idx) => obj[curr] < obj[romanNum[idx + 1]] ? acc - obj[curr] : acc + obj[curr], 0);
+    return romanNum.match(/CM|CD|XC|XL|IX|IV|\w/g).reduce((acc, el) => acc + map[el], 0);
 };
 
 //RAV encryption handler
