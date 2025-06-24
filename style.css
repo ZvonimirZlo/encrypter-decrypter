@@ -1,9 +1,10 @@
 :root {
     --bodyBackground: #0d1117;
-    --encryptBtnBack: linear-gradient(to right, purple, blue);
-    --decryptBtnBack: linear-gradient(to right, green, blue);
-    --howBtnColor: linear-gradient(to right, orange, red);
-    --borderColor: rgb(120, 145, 66);
+    --encryptBtnBack: linear-gradient(to right, rgb(180, 34, 180), rgb(58, 139, 194));
+    --decryptBtnBack: linear-gradient(to right, rgb(58, 139, 194), rgb(180, 34, 180));
+    --borderColor: rgb(14, 38, 54);
+    --descButtonBack: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+    --txtAreaBack: linear-gradient(to left, #0d1117, #141924);
 }
 
 * {
@@ -23,37 +24,37 @@ body {
 }
 
 #descBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  outline: none;
-  height: 43px;
-  width: 138px;
-  border: none;
-  text-decoration: none;
-  background-image: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
-  border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    outline: none;
+    height: 43px;
+    width: 138px;
+    border: none;
+    text-decoration: none;
+    background: var(--descButtonBack);
+    border-radius: 5px;
 }
 
 #descBtn:hover {
-  animation: rotate 0.4s linear infinite;
+    animation: rotate 0.4s linear infinite;
 }
 
 @keyframes rotate {
-  100% {
-    filter: hue-rotate(-360deg)
-  }
+    100% {
+        filter: hue-rotate(-360deg)
+    }
 }
 
 #descBtn span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 35px;
-  width: 130px;
-  background: #222222;
-  font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 130px;
+    background: #222222;
+    font-size: 16px;
 }
 
 .nav ul li a {
@@ -88,27 +89,26 @@ nav ul .how {
     margin: auto;
 }
 
-.encrypt,.decrypt {
+.encrypt,
+.decrypt {
     display: flex;
     flex-direction: column;
 }
 
 .enc {
     background: var(--encryptBtnBack);
-    color: aliceblue;
 }
 
 .dec {
     background: var(--decryptBtnBack);
-    color: aliceblue;
 }
 
-.enc, .dec {
+.enc,
+.dec {
     width: 9em;
     height: 35px;
     border-radius: 23px;
-    color: black;
-    background-color: #fff;
+    color: #fff;
     font-weight: bold;
     position: relative;
     overflow: hidden;
@@ -149,12 +149,14 @@ button:hover:before {
 textarea {
     height: 300px;
     width: 42rem;
-    background-color: #0d1116;
-    color: #fff;
-    border: 1px solid var(--borderColor);
-    border-radius: 5px;
+    background: var(--txtAreaBack);
+    color: white;
+    background: var(--txtAreaBack) padding-box, linear-gradient(to left, rgb(12, 32, 46), rgb(84, 52, 145)) border-box;
+    border-radius: 8px;
+    border: 3px solid transparent;
     margin: 5px;
     font-size: 14px;
+    padding: 5px;
 }
 
 select {
@@ -260,8 +262,8 @@ input:checked+.slider:after {
     height: 2.5rem;
 }
 
-@media (width <= 1000px) {
-  .content{
-    flex-direction: column;
-  }
+@media (width <=1000px) {
+    .content {
+        flex-direction: column;
+    }
 }
