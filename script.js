@@ -61,7 +61,8 @@ const showHideMethodEnc = () => {
 
 //**ENCRYPTION HANDLER**
 const encrypt = () => {
-    if (encryptSelect.value === 'RAV') encryptOut.innerHTML = `${rav(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}] `;
+    if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}] `;
+    else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'Alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'Substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'Multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
@@ -74,7 +75,8 @@ encryptButton.onclick = encrypt;
 
 // **DECRYPTION HANDLER**
 const decrypt = () => {
-    if (decryptSelect.value === 'RAV') decryptOut.innerHTML = `${ravDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
@@ -281,7 +283,7 @@ const fromRomeHandler = (romanNum) => {
 };
 
 //RAV encryption handler
-function rav(str) {
+function ravEso(str) {
     const alpha = 'ivxlcdm';
     const repl = '][}{)(&';
     const replacer = (x) => repl[alpha.indexOf(x)];
@@ -294,7 +296,7 @@ function rav(str) {
 };
 
 //RAV decryption handler
-function ravDec(str) {
+function ravEsoDec(str) {
     const repl = 'ivxlcdm';
     const alpha = '][}{)(&';
     const replacer = (x) => repl[alpha.indexOf(x)];
@@ -306,6 +308,35 @@ function ravDec(str) {
         .map(x => String.fromCharCode(x))
         .join('')
 };
+
+
+//RAV-N encryption handler
+function rav_n(str) {
+    const alpha = 'ivxlcdm';
+    const repl = '1234567';
+    const replacer = (x) => repl[alpha.indexOf(x)];
+    return str.split('')
+        .map(x => x.charCodeAt())
+        .map(x => toRomeHandler(x))
+        .reverse()
+        .join('8')
+        .replace(/[ivxlcdm]/g, replacer)   
+};
+
+//RAV-N decryption handler
+function ravDec_n(str) {
+    const repl = 'ivxlcdm';
+    const alpha = '1234567';
+    const replacer = (x) => repl[alpha.indexOf(x)];
+    return str
+        .replace(/[1-7]/g, replacer).toUpperCase()
+        .split('8')
+        .reverse()
+        .map(x => fromRomeHandler(x))
+        .map(x => String.fromCharCode(x))
+        .join('')
+};
+
 
 
 
