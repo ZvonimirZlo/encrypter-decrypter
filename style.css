@@ -22,6 +22,40 @@ body {
     min-width: 100vw;
 }
 
+#descBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  outline: none;
+  height: 43px;
+  width: 138px;
+  border: none;
+  text-decoration: none;
+  background-image: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
+  border-radius: 5px;
+}
+
+#descBtn:hover {
+  animation: rotate 0.4s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    filter: hue-rotate(-360deg)
+  }
+}
+
+#descBtn span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 130px;
+  background: #222222;
+  font-size: 16px;
+}
+
 .nav ul li a {
     text-decoration: none;
 }
@@ -69,7 +103,7 @@ nav ul .how {
     color: aliceblue;
 }
 
-button {
+.enc, .dec {
     width: 9em;
     height: 35px;
     border-radius: 23px;
@@ -80,7 +114,21 @@ button {
     overflow: hidden;
 }
 
-button:before {
+.enc:before {
+    content: '';
+    position: absolute;
+    height: 70px;
+    width: 10px;
+    background: #f3f3f3;
+    box-shadow: 0 0 10px #fff;
+    filter: blur(1px);
+    opacity: 0.9;
+    top: -30px;
+    transition: 0.5s;
+    transform: rotate(-25deg) translateX(-45px);
+}
+
+.dec:before {
     content: '';
     position: absolute;
     height: 70px;

@@ -30,12 +30,12 @@ const timeFormat = `${dayNames[day]} ${date}.${month}.${year} ${hours}:${minutes
 
 //Shows inputOne if Vigenere cipher or Alternating split 
 document.body.addEventListener('mousemove', () => {
-    encryptSelect.value === 'vigenere' || encryptSelect.value === 'alternating split' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
+    encryptSelect.value === 'Vigenere' || encryptSelect.value === 'Alternating split' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
 });
 
 //Shows inputTwo if Vigenere cipher or Alternating split 
 document.body.addEventListener('mousemove', () => {
-    decryptSelect.value === 'vigenere' || decryptSelect.value === 'alternating split' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
+    decryptSelect.value === 'Vigenere' || decryptSelect.value === 'Alternating split' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
 })
 
 
@@ -61,12 +61,12 @@ const showHideMethodEnc = () => {
 
 //**ENCRYPTION HANDLER**
 const encrypt = () => {
-    if (encryptSelect.value === 'rav') encryptOut.innerHTML = `${rav(encryptTextBox.value)} `;
-    else if (encryptSelect.value === 'alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'vigenere') encryptOut.innerHTML = `${encryptVin(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'rot 13') encryptOut.innerHTML = `${rot13encrypter(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    if (encryptSelect.value === 'RAV') encryptOut.innerHTML = `${rav(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}] `;
+    else if (encryptSelect.value === 'Alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (encryptSelect.value === 'Substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (encryptSelect.value === 'Multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (encryptSelect.value === 'Vigenere') encryptOut.innerHTML = `${encryptVin(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (encryptSelect.value === 'ROT 13') encryptOut.innerHTML = `${rot13encrypter(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
 encryptButton.onclick = encrypt;
 
@@ -74,12 +74,12 @@ encryptButton.onclick = encrypt;
 
 // **DECRYPTION HANDLER**
 const decrypt = () => {
-    if (decryptSelect.value === 'rav') decryptOut.innerHTML = `${ravDec(decryptTextBox.value)}`;
-    else if (decryptSelect.value === 'alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'vigenere') decryptOut.innerHTML = `${decryptVin(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'rot 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    if (decryptSelect.value === 'RAV') decryptOut.innerHTML = `${ravDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'Alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'Substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'Vigenere') decryptOut.innerHTML = `${decryptVin(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'ROT 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
 decryptButton.onclick = decrypt;
 
@@ -207,6 +207,8 @@ function decryptVin(text, keyW) {
     return output;
 }
 
+//Helper functions for RAV
+
 //Number to roman handler
 const toRomeHandler = (integer) => {
     let output = '';
@@ -251,7 +253,7 @@ const toRomeHandler = (integer) => {
             output += 'I';
             integer -= 1;
         } else {
-            output += 'Invalid input!'; //Handles edge cases, when input <= 0 or input is a mix of roman and decimal numbers...
+            output += 'Invalid input!';
         }
     } while (integer > 0);
     return output.toLowerCase();
@@ -279,14 +281,24 @@ const fromRomeHandler = (romanNum) => {
 };
 
 //RAV encryption handler
-function rav(str){
-  return  str.split('').map(x => x.charCodeAt()).map(x => toRomeHandler(x)).reverse().join('w').toLowerCase();
-}
+function rav(str) {
+    return str.split('')
+        .map(x => x.charCodeAt())
+        .map(x => toRomeHandler(x))
+        .reverse()
+        .join('w')
+        .toLowerCase();
+};
 
 //RAV decryption handler
 function ravDec(str) {
-  return str.toUpperCase().split('W').reverse().map(x => fromRomeHandler(x)).map(x => String.fromCharCode(x)).join('');
-}
+    return str.toUpperCase()
+        .split('W')
+        .reverse()
+        .map(x => fromRomeHandler(x))
+        .map(x => String.fromCharCode(x))
+        .join('');
+};
 
 
 
