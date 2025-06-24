@@ -63,6 +63,7 @@ const showHideMethodEnc = () => {
 const encrypt = () => {
     if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}] `;
     else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (encryptSelect.value === 'RAV-S') encryptOut.innerHTML = `${rav_s(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'Alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'Substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'Multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
@@ -77,6 +78,7 @@ encryptButton.onclick = encrypt;
 const decrypt = () => {
     if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (encryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
@@ -282,7 +284,7 @@ const fromRomeHandler = (romanNum) => {
     return romanNum.match(/CM|CD|XC|XL|IX|IV|\w/g).reduce((acc, el) => acc + map[el], 0);
 };
 
-//RAV encryption handler
+//RAV-ESO encryption handler
 function ravEso(str) {
     const alpha = 'ivxlcdm';
     const repl = '][}{)(&';
@@ -295,7 +297,7 @@ function ravEso(str) {
         .replace(/[ivxlcdm]/g, replacer)   
 };
 
-//RAV decryption handler
+//RAV-ESO decryption handler
 function ravEsoDec(str) {
     const repl = 'ivxlcdm';
     const alpha = '][}{)(&';
@@ -336,6 +338,37 @@ function ravDec_n(str) {
         .map(x => String.fromCharCode(x))
         .join('')
 };
+
+//RAV-S encryption handler
+function rav_s(str) {
+    const alpha = 'ivxlcdm';
+    const repl = '!#$%&?@';
+    const replacer = (x) => repl[alpha.indexOf(x)];
+    return str.split('')
+        .map(x => x.charCodeAt())
+        .map(x => toRomeHandler(x))
+        .reverse()
+        .join('+')
+        .replace(/[ivxlcdm]/g, replacer)   
+};
+
+//RAV-S decryption handler
+function rav_sDec(str) {
+    const repl = 'ivxlcdm';
+    const alpha = '!#$%&?@';
+    const replacer = (x) => repl[alpha.indexOf(x)];
+    return str
+        .replace(/[\x!\x#\x$\x%\x&\x?\x@}]/g, replacer)
+        .toUpperCase()
+        .split('+')
+        .reverse()
+        .map(x => fromRomeHandler(x))
+        .map(x => String.fromCharCode(x))
+        .join('')
+};
+
+
+
 
 
 
