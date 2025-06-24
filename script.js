@@ -87,8 +87,8 @@ decryptButton.onclick = decrypt;
 function rot13encrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const decrypt = (x) => rot[alpha.indexOf(x)];
-    return str.replace(/[a-zA-Z0-9]/g, decrypt);
+    const encrypt = (x) => rot[alpha.indexOf(x)];
+    return str.replace(/[a-zA-Z0-9]/g, encrypt);
 };
 
 //ROT 13 decrypt handler
@@ -282,22 +282,29 @@ const fromRomeHandler = (romanNum) => {
 
 //RAV encryption handler
 function rav(str) {
+    const alpha = 'ivxlcdm';
+    const repl = '][}{)(&';
+    const replacer = (x) => repl[alpha.indexOf(x)];
     return str.split('')
         .map(x => x.charCodeAt())
         .map(x => toRomeHandler(x))
         .reverse()
-        .join('w')
-        .toLowerCase();
+        .join('.')
+        .replace(/[ivxlcdm]/g, replacer)   
 };
 
 //RAV decryption handler
 function ravDec(str) {
-    return str.toUpperCase()
-        .split('W')
+    const repl = 'ivxlcdm';
+    const alpha = '][}{)(&';
+    const replacer = (x) => repl[alpha.indexOf(x)];
+    return str
+        .replace(/[\]\[\}\{\(\)\&}]/g, replacer).toUpperCase()
+        .split('.')
         .reverse()
         .map(x => fromRomeHandler(x))
         .map(x => String.fromCharCode(x))
-        .join('');
+        .join('')
 };
 
 
