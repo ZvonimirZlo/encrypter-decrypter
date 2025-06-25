@@ -47,6 +47,10 @@ const showHideTextBox = () => {
 //Shows description 
 descriptionButton.onclick = showHideTextBox;
 
+const hideTextBox = () => {
+    description.style.display = "none";
+};
+
 // Hides description text box on page reload
 window.onload = () => {
     description.style.display = "none";
