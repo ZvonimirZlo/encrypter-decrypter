@@ -111,6 +111,11 @@ function rot13decrypter(str) {
 //Alternating split encrypt handler
 function encryptAltSplit(text, n) {
     n = inputOne.value;
+    console.log(n.split('').map(Number));
+    if( n <= 0 || n > 100) {
+        alert('Key have to be a positive number below 100!');
+        return;
+    };
     for (let i = 0; i < n; i++) {
         text = text && text.replace(/.(.|$)/g, '$1') + text.replace(/(.)./g, '$1')
     }
@@ -119,8 +124,9 @@ function encryptAltSplit(text, n) {
 
 //Alternating split decrypt handler
 function decryptAltSplit(text, n) {
-    if (!text || n <= 0) alert('Something');
     n = inputTwo.value;
+    
+    // if(typeof n !== 'number') alert('Key value have to be a number!');
     let l = text && text.length / 2 | 0
     for (let i = 0; i < n; i++) {
         text = text.slice(l).replace(/./g, (_, i) => _ + (i < l ? text[i] : ''))
