@@ -198,7 +198,7 @@ const isLowerCase = (letter) => {
 function encryptVin(text, key) {
     key = inputOne.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
 
-    if(!key.match(/[a-zA-Z]/g)) alert('Key have to be a word!');
+    if(!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character!');
     let cypher = "";
     for (let i = 0, j = 0; i < text.length; i++) {
         let currentLetter = text[i];
@@ -221,7 +221,7 @@ function encryptVin(text, key) {
 //Vigenere cipher decrypt handler
 function decryptVin(text, keyW) {
     keyW = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
-    if(!keyW.match(/[a-zA-Z]/g)) alert('Key have to be a word!');
+    if(!keyW.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character!');
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const input = text.toUpperCase();
     const key = keyW.toUpperCase().replace(/\s+/g, '');
