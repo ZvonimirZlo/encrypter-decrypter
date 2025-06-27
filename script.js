@@ -76,6 +76,23 @@ const encrypt = () => {
 }
 encryptButton.onclick = encrypt;
 
+//Changes input one and/or input two value to string if Vigenere is selected because Alternating split works only with numbers as a key
+const changeInputValue = () => {
+    if(encryptSelect.value === 'Vigenere'){
+        inputOne.setAttribute('type', 'text');
+    }else{
+        inputOne.setAttribute('type', 'number');
+    }
+        if(decryptSelect.value === 'Vigenere'){
+        inputTwo.setAttribute('type', 'text');
+    }else{
+        inputTwo.setAttribute('type', 'number');
+    }
+};
+
+encryptSelect.onclick = changeInputValue;
+
+
 
 
 // **DECRYPTION HANDLER**
@@ -90,6 +107,9 @@ const decrypt = () => {
     else if (decryptSelect.value === 'ROT 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
 decryptButton.onclick = decrypt;
+
+decryptSelect.onclick = changeInputValue;
+
 
 //ROT 13 encrypt handler
 function rot13encrypter(str) {
@@ -111,8 +131,7 @@ function rot13decrypter(str) {
 //Alternating split encrypt handler
 function encryptAltSplit(text, n) {
     n = inputOne.value;
-    console.log(n.split('').map(Number));
-    if( n <= 0 || n > 100) {
+    if (n <= 0 || n > 100) {
         alert('Key have to be a positive number below 100!');
         return;
     };
@@ -125,8 +144,10 @@ function encryptAltSplit(text, n) {
 //Alternating split decrypt handler
 function decryptAltSplit(text, n) {
     n = inputTwo.value;
-    
-    // if(typeof n !== 'number') alert('Key value have to be a number!');
+    if (n <= 0 || n > 100) {
+        alert('Key have to be a positive number below 100!');
+        return;
+    };
     let l = text && text.length / 2 | 0
     for (let i = 0; i < n; i++) {
         text = text.slice(l).replace(/./g, (_, i) => _ + (i < l ? text[i] : ''))
@@ -304,7 +325,7 @@ function ravEso(str) {
         .map(x => toRomeHandler(x))
         .reverse()
         .join('.')
-        .replace(/[ivxlcdm]/g, replacer)   
+        .replace(/[ivxlcdm]/g, replacer)
 };
 
 //RAV-ESO decryption handler
@@ -332,7 +353,7 @@ function rav_n(str) {
         .map(x => toRomeHandler(x))
         .reverse()
         .join('8')
-        .replace(/[ivxlcdm]/g, replacer)   
+        .replace(/[ivxlcdm]/g, replacer)
 };
 
 //RAV-N decryption handler
@@ -359,7 +380,7 @@ function rav_s(str) {
         .map(x => toRomeHandler(x))
         .reverse()
         .join('+')
-        .replace(/[ivxlcdm]/g, replacer)   
+        .replace(/[ivxlcdm]/g, replacer)
 };
 
 //RAV-S decryption handler
