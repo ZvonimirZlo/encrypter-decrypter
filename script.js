@@ -133,7 +133,7 @@ function rot13decrypter(str) {
 function encryptAltSplit(text, n) {
     n = inputOne.value;
     if (n <= 0 || n > 100) {
-        alert('Key have to be a number between 1 and 100!');
+        alert('Key have to be a number between 1 and 100! Please enter a valid key.');
         return;
     };
     for (let i = 0; i < n; i++) {
@@ -146,7 +146,7 @@ function encryptAltSplit(text, n) {
 function decryptAltSplit(text, n) {
     n = inputTwo.value;
     if (n <= 0 || n > 100) {
-        alert('Key have to be a number between 1 and 100!');
+        alert('Key have to be a number between 1 and 100! Please enter a valid key.');
         return;
     };
     let l = text && text.length / 2 | 0
@@ -216,7 +216,7 @@ function mod(n, m) {
 function encryptVin(text, key) {
     key = inputOne.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
 
-    if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character!');
+    if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character! Please enter a valid key.');
     let cypher = "";
     for (let i = 0, j = 0; i < text.length; i++) {
         let currentLetter = text[i];
@@ -241,7 +241,7 @@ function decryptVin(enc, key) {
 
     key = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('').replace(/\s+/g, '');
     
-    if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character!');
+    if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character! Please enter a valid key.');
     
     let decrypted = "";
     let j = 0;
