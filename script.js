@@ -78,14 +78,14 @@ encryptButton.onclick = encrypt;
 
 //Changes input one and/or input two value to string if Vigenere is selected because Alternating split works only with numbers as a key
 const changeInputValue = () => {
-    if(encryptSelect.value === 'Vigenere'){
+    if (encryptSelect.value === 'Vigenere') {
         inputOne.setAttribute('type', 'text');
-    }else{
+    } else {
         inputOne.setAttribute('type', 'number');
     }
-        if(decryptSelect.value === 'Vigenere'){
+    if (decryptSelect.value === 'Vigenere') {
         inputTwo.setAttribute('type', 'text');
-    }else{
+    } else {
         inputTwo.setAttribute('type', 'number');
     }
 };
@@ -194,11 +194,23 @@ const isLowerCase = (letter) => {
     }
 };
 
+function isLetter(letter) {
+    if (isLowerCase(letter) || isUpperCase(letter)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function mod(n, m) {
+    return ((n % m) + m) % m;
+}
+
 //Vigenere cipher encrypt handler
 function encryptVin(text, key) {
     key = inputOne.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
 
-    if(!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character!');
+    if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character!');
     let cypher = "";
     for (let i = 0, j = 0; i < text.length; i++) {
         let currentLetter = text[i];
@@ -219,30 +231,41 @@ function encryptVin(text, key) {
 };
 
 //Vigenere cipher decrypt handler
-function decryptVin(text, keyW) {
-    keyW = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
-    if(!keyW.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character!');
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const input = text.toUpperCase();
-    const key = keyW.toUpperCase().replace(/\s+/g, '');
+function decryptVin(enc, key) {
 
-    let output = "";
-    let keyIndex = 0;
+    key = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('').replace(/\s+/g, '');
+    
+    if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character!');
+    
+    let decrypted = "";
+    let j = 0;
+    
+    for (let i = 0; i < enc.length; i++) {
+        let currentLetter = enc[i];
+        const A = 65;
+        const a = 97;
 
-    for (let i = 0; i < input.length; i++) {
-        const char = input[i];
-        if (alphabet.includes(char)) {
-            const charIndex = alphabet.indexOf(char);
-            const keyCharIndex = alphabet.indexOf(key[keyIndex % key.length]);
-            const encryptedCharIndex = (charIndex - keyCharIndex + alphabet.length) % alphabet.length;
+        if (isUpperCase(currentLetter)) {
+            let Ci = (currentLetter.charCodeAt(0) - A);
+            let Ki = (key[j % key.length].toUpperCase()).charCodeAt() - A;
+            let upperLetter = mod(Ci - Ki, 26);
 
-            output += alphabet[encryptedCharIndex];
-            keyIndex++;
+            decrypted += String.fromCharCode(upperLetter + A);
+
+            j++;
+        } else if (isLowerCase(currentLetter)) {
+            let Ci = (currentLetter.charCodeAt(0) - a);
+            let Ki = (key[j % key.length].toLowerCase()).charCodeAt() - a;
+            let lowerLetter = mod(Ci - Ki, 26);
+
+            decrypted += String.fromCharCode(lowerLetter + a);
+
+            j++;
         } else {
-            output += char;
+            decrypted += currentLetter;
         }
     }
-    return output;
+    return decrypted;
 }
 
 //Helper functions for RAV
