@@ -64,7 +64,7 @@ const showHideMethodEnc = () => {
 
 
 //**ENCRYPTION HANDLER**
-const encrypt = () => {
+const handleEncryption = () => {
     if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}] `;
     else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'RAV-S') encryptOut.innerHTML = `${rav_s(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
@@ -74,9 +74,10 @@ const encrypt = () => {
     else if (encryptSelect.value === 'Vigenere') encryptOut.innerHTML = `${encryptVin(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (encryptSelect.value === 'ROT 13') encryptOut.innerHTML = `${rot13encrypter(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
-encryptButton.onclick = encrypt;
+encryptButton.onclick = handleEncryption;
 
 //Changes input one and/or input two value to string if Vigenere is selected because Alternating split works only with numbers as a key
+// and Vigenere cipher works only with string as a keys
 const changeInputValue = () => {
     if (encryptSelect.value === 'Vigenere') {
         inputOne.setAttribute('type', 'text');
@@ -96,39 +97,39 @@ encryptSelect.onclick = changeInputValue;
 
 
 // **DECRYPTION HANDLER**
-const decrypt = () => {
+const handleDecryption = () => {
     if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    else if (decryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'Vigenere') decryptOut.innerHTML = `${decryptVin(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
     else if (decryptSelect.value === 'ROT 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
 }
-decryptButton.onclick = decrypt;
+decryptButton.onclick = handleDecryption;
 
 decryptSelect.onclick = changeInputValue;
 
 
-//ROT 13 encrypt handler
+//ROT 13 handleEncryption handler
 function rot13encrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const encrypt = (x) => rot[alpha.indexOf(x)];
-    return str.replace(/[a-zA-Z0-9]/g, encrypt);
+    const handleEncryption = (x) => rot[alpha.indexOf(x)];
+    return str.replace(/[a-zA-Z0-9]/g, handleEncryption);
 };
 
-//ROT 13 decrypt handler
+//ROT 13 handleDecryption handler
 function rot13decrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const decrypt = (x) => alpha[rot.indexOf(x)];
-    return str.replace(/[a-zA-Z0-9]/g, decrypt);
+    const handleDecryption = (x) => alpha[rot.indexOf(x)];
+    return str.replace(/[a-zA-Z0-9]/g, handleDecryption);
 };
 
 
-//Alternating split encrypt handler
+//Alternating split handleEncryption handler
 function encryptAltSplit(text, n) {
     n = inputOne.value;
     if (n <= 0 || n > 100) {
@@ -141,7 +142,7 @@ function encryptAltSplit(text, n) {
     return text;
 };
 
-//Alternating split decrypt handler
+//Alternating split handleDecryption handler
 function decryptAltSplit(text, n) {
     n = inputTwo.value;
     if (n <= 0 || n > 100) {
@@ -155,27 +156,29 @@ function decryptAltSplit(text, n) {
     return text;
 }
 
-//Substitution encrypt handler
+//Substitution handleEncryption handler
 function encryptSubstitution(str) {
     return str.replace(/./g, x => x.charCodeAt(0) + 58);
 }
 
-//Substitution decrypt handler
+//Substitution handleDecryption handler
 function decryptSubstitution(str) {
     return str.replace(/1?\d{2}/g, i => String.fromCharCode(+i - 58));
 }
 
-//Multi six encrypt handler
+//Multi six handleEncryption handler
 function encodeMultSix(str) {
     return str.split('').map(x => x.charCodeAt(str) * 6).map(x => String.fromCharCode(x)).join('');
 }
 
-//Multi six decrypt handler
+//Multi six handleDecryption handler
 function decodeMultSix(str) {
     return str.split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
 }
 
-//Helper functions
+//*HELPER FUNCTIONS
+
+//Checks if letter is uppercase 
 const isUpperCase = (letter) => {
     var l = letter.charCodeAt();
     if (l >= 65 && l <= 90) {
@@ -185,6 +188,7 @@ const isUpperCase = (letter) => {
     }
 };
 
+//Checks if letter is lowercase
 const isLowerCase = (letter) => {
     var l = letter.charCodeAt();
     if (l >= 97 && l <= 122) {
@@ -202,11 +206,13 @@ function isLetter(letter) {
     }
 }
 
+//Modulo
 function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
-//Vigenere cipher encrypt handler
+
+//Vigenere cipher handleEncryption handler
 function encryptVin(text, key) {
     key = inputOne.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
 
@@ -230,7 +236,7 @@ function encryptVin(text, key) {
     return cypher;
 };
 
-//Vigenere cipher decrypt handler
+//Vigenere cipher handleDecryption handler
 function decryptVin(enc, key) {
 
     key = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('').replace(/\s+/g, '');
@@ -268,7 +274,7 @@ function decryptVin(enc, key) {
     return decrypted;
 }
 
-//Helper functions for RAV
+//*HELPER FUNCTIONS FOR RAV*
 
 //Number to roman handler
 const toRomeHandler = (integer) => {
@@ -415,7 +421,7 @@ function rav_sDec(str) {
     const alpha = '!#$%&?@';
     const replacer = (x) => repl[alpha.indexOf(x)];
     return str
-        .replace(/[\x!\x#\x$\x%\x&\x?\x@}]/g, replacer)
+        .replace(/[\x!\x#\x$\x%\x&\x?\x@]/g, replacer)
         .toUpperCase()
         .split('+')
         .reverse()
@@ -423,6 +429,8 @@ function rav_sDec(str) {
         .map(x => String.fromCharCode(x))
         .join('')
 };
+
+
 
 
 
