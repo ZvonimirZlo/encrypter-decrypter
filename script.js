@@ -51,12 +51,12 @@ const hideTextBox = () => {
     description.style.display = "none";
 };
 
-// Hides description text box on page reload
+// Hides description text box on page load
 window.onload = () => {
     description.style.display = "none";
 }
 
-// Showing/hiding encryption method depending on switcher position
+// Shows/hides encryption method depending on switcher position
 const showHideMethodEnc = () => {
     const slider = document.getElementById('switch');
     return slider.checked === true ? `Method: ${encryptSelect.value} ${inputOne.value}` : `Method hidden!`;
@@ -76,8 +76,8 @@ const handleEncryption = () => {
 }
 encryptButton.onclick = handleEncryption;
 
-//Changes input one and/or input two value to string if Vigenere is selected because Alternating split works only with numbers as a key
-// and Vigenere cipher works only with string as a keys
+//Changes input one and/or input two value to string if Vigenere cipher is selected because Alternating split works only with numbers as a key
+// and Vigenere cipher works only with strings as a keys
 const changeInputValue = () => {
     if (encryptSelect.value === 'Vigenere') {
         inputOne.setAttribute('type', 'text');
@@ -198,6 +198,7 @@ const isLowerCase = (letter) => {
     }
 };
 
+//Checks if input value is letter
 function isLetter(letter) {
     if (isLowerCase(letter) || isUpperCase(letter)) {
         return true;
@@ -212,7 +213,7 @@ function mod(n, m) {
 }
 
 
-//Vigenere cipher handleEncryption handler
+//Vigenere cipher encryption handler
 function encryptVin(text, key) {
     key = inputOne.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
 
@@ -236,7 +237,7 @@ function encryptVin(text, key) {
     return cypher;
 };
 
-//Vigenere cipher handleDecryption handler
+//Vigenere cipher decryption handler
 function decryptVin(enc, key) {
 
     key = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('').replace(/\s+/g, '');

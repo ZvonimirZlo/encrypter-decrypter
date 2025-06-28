@@ -269,7 +269,10 @@ input:checked+.slider:after {
 }
 
 .footer {
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: rgb(234, 214, 214);
     font-size: 12px;
     bottom: 0;
