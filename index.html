@@ -21,20 +21,20 @@
     <div class="content" id="form" onclick="hideTextBox()">
         <div class="encrypt">
             <div class="switchEnc">
-                <button class="enc" id="encBtn"><span class="encSpan">ENCRYPT</span></button>
+                <button class="enc" id="encBtn" title="Encrypt text!"><span class="encSpan">ENCRYPT</span></button>
                 <label class="switch">
                     <input type="checkbox" id="switch">
                     <span class="slider"></span>
                 </label>
-                <select name="ciphers" id="encrypter-select" placeholder="Please choose an option" required>
-                    <option value="option">Method option</option>
+                <select name="ciphers" id="encrypter-select" placeholder="Please choose an option" title="Choose encryption mathod!" required>
+                    <option value="option">Method</option>
                     <option value="RAV-ESO">RAV-ESO</option>
                     <option value="RAV-N">RAV-N</option>
                     <option value="RAV-S">RAV-S</option>
+                    <option value="Vigenere">Vigenère cipher</option>
                     <option value="Alternating split">Alternating split</option>
                     <option value="Substitution">Substitution</option>
                     <option value="Multi six">Multi six</option>
-                    <option value="Vigenere">Vigenere</option>
                     <option value="ROT 13">Rot 13</option>
                 </select>
                 <input class="num" id="number1" type="number" min="1" max="100" title="Key" placeholder="Enter key here!">
@@ -45,16 +45,16 @@
         </div>
         <div class="decrypt">
             <div class="switchEnc">
-                <button class="dec" id="decBtn"><span class="decSpan">DECRYPT</span></button>
-                <select name="ciphers" id="decrypter-select" placeholder="Please choose an option" required>
-                    <option value="option">Method option</option>
+                <button class="dec" id="decBtn" title="Decrypt text!"><span class="decSpan">DECRYPT</span></button>
+                <select name="ciphers" id="decrypter-select" placeholder="Please choose an option" title="Choose decryption method!" required>
+                    <option value="option">Method</option>
                     <option value="RAV-ESO">RAV-ESO</option>
                     <option value="RAV-N">RAV-N</option>
                     <option value="RAV-S">RAV-S</option>
+                    <option value="Vigenere">Vigenère cipher</option>
                     <option value="Alternating split">Alternating split</option>
                     <option value="Substitution">Substitution</option>
                     <option value="Multi six">Multi six</option>
-                    <option value="Vigenere">Vigenere</option>
                     <option value="ROT 13">Rot 13</option>
                 </select>
                 <input class="num" id="number2" title="Key" placeholder="Enter key here!">

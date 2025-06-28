@@ -133,7 +133,7 @@ function rot13decrypter(str) {
 function encryptAltSplit(text, n) {
     n = inputOne.value;
     if (n <= 0 || n > 100) {
-        alert('Key have to be a positive number below or equal to 100!');
+        alert('Key have to be a number between 1 and 100!');
         return;
     };
     for (let i = 0; i < n; i++) {
@@ -146,7 +146,7 @@ function encryptAltSplit(text, n) {
 function decryptAltSplit(text, n) {
     n = inputTwo.value;
     if (n <= 0 || n > 100) {
-        alert('Key have to be a positive number below or equal to 100!');
+        alert('Key have to be a number between 1 and 100!');
         return;
     };
     let l = text && text.length / 2 | 0
