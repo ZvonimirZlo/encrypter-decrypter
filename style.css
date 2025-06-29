@@ -15,7 +15,7 @@
 
 body {
     color: white;
-    background-color: var(--bodyBackground);
+    background: url(background/pawel-czerwinski-W10XfpqLu4Y-unsplash.jpg) center no-repeat fixed;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -126,21 +126,7 @@ nav ul .how {
     overflow: hidden;
 }
 
-.enc:before {
-    content: '';
-    position: absolute;
-    height: 70px;
-    width: 10px;
-    background: #f3f3f3;
-    box-shadow: 0 0 10px #fff;
-    filter: blur(1px);
-    opacity: 0.9;
-    top: -30px;
-    transition: 0.5s;
-    transform: rotate(-25deg) translateX(-45px);
-}
-
-.dec:before {
+.enc:before, .dec:before {
     content: '';
     position: absolute;
     height: 70px;
@@ -159,8 +145,8 @@ button:hover:before {
 }
 
 textarea {
-    height: 18rem;
-    width: 45vw;
+    height: 22vh;
+    width: 40vw;
     background: var(--txtAreaBack);
     color: white;
     background: var(--txtAreaBack) padding-box, linear-gradient(to left, rgb(12, 32, 46), rgb(84, 52, 145)) border-box;
@@ -174,6 +160,7 @@ textarea {
     align-items: center;
     flex-shrink: 1;
 }
+
 
 select {
     background: #0E6EB8;
@@ -273,7 +260,7 @@ input:checked+.slider:after {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(234, 214, 214);
+    background-color: var(--txtAreaBack);
     font-size: 12px;
     bottom: 0;
     position: relative;
