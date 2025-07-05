@@ -171,7 +171,8 @@ select {
 }
 
 .num {
-    width: 144px;
+    width: 114px;
+    height: 35px;
     background: #3C3C3C;
     color: #fff;
     border-radius: 5px;
@@ -269,11 +270,10 @@ input:checked+.slider:after {
 }
 
 .footer {
-    /* text-align: center; */
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--txtAreaBack);
+    color:#4894ce;
     font-size: 12px;
     bottom: 0;
     position: relative;
