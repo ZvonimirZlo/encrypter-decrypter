@@ -351,24 +351,24 @@ const fromRomeHandler = (romanNum) => {
 //RAV-ESO encryption handler
 function ravEso(str) {
     const alpha = 'ivxlcdm';
-    const repl = '][}{)(&';
+    const repl = '][}+)(&';
     const replacer = (x) => repl[alpha.indexOf(x)];
     return str.split('')
         .map(x => x.charCodeAt())
         .map(x => toRomeHandler(x))
         .reverse()
-        .join('.')
+        .join('!')
         .replace(/[ivxlcdm]/g, replacer)
 };
 
 //RAV-ESO decryption handler
 function ravEsoDec(str) {
     const repl = 'ivxlcdm';
-    const alpha = '][}{)(&';
+    const alpha = '][}+)(&';
     const replacer = (x) => repl[alpha.indexOf(x)];
     return str
-        .replace(/[\]\[\}\{\(\)\&}]/g, replacer).toUpperCase()
-        .split('.')
+        .replace(/[\]\[\}\+\(\)\&}]/g, replacer).toUpperCase()
+        .split('!')
         .reverse()
         .map(x => fromRomeHandler(x))
         .map(x => String.fromCharCode(x))
