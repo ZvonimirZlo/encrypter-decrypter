@@ -131,6 +131,7 @@ nav ul .how {
 .enc:hover, 
 .dec:hover {
     box-shadow: 2px 2px 12px 2px rgb(163, 88, 233);
+    transition: ease-in-out 0.2s;
 }
 
 .enc:before, .dec:before {
@@ -177,7 +178,8 @@ select {
 }
 
 select:hover {
-  box-shadow: 1px 1px 12px 1px rgb(163, 88, 233);  
+  box-shadow: 1px 1px 12px 1px var(--footerColor);  
+  transition: ease-in 0.2s;
 }
 
 .num {
@@ -250,9 +252,9 @@ input:checked+.slider {
     box-shadow: 1px 1px 15px 1px lawngreen;
 }
 
-input:focus+.slider {
+/* input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
-}
+} */
 
 input:checked+.slider:before {
     -webkit-transform: translateX(26px);
@@ -301,6 +303,7 @@ input:checked+.slider:after {
     color: rgb(29, 185, 206);
     filter: drop-shadow(#4444dd 1px 1px 2px);
     zoom: 1.1;
+    transition: ease-in 0.2s;
 }
 
 @media (width <=700px) {
