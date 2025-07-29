@@ -5,6 +5,7 @@
     --borderColor: rgb(14, 38, 54);
     --descButtonBack: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
     --txtAreaBack: linear-gradient(to left, #0d1117, #141924);
+    --footerColor: #4894ce;
 }
 
 * {
@@ -273,12 +274,23 @@ input:checked+.slider:after {
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#4894ce;
+    color:var(--footerColor);
     font-size: 12px;
     bottom: 0;
     position: relative;
     width: 100%;
     height: 2.5rem;
+}
+
+.svg {
+ color: var(--footerColor);
+ margin: 2px;
+}
+
+.svg:hover, a:hover {
+    color: rgb(29, 185, 206);
+    filter: drop-shadow(#4444dd 1px 1px 1px);
+    zoom: 1.1;
 }
 
 @media (width <=700px) {
