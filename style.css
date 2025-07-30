@@ -16,7 +16,7 @@
 
 body {
     color: white;
-    background: url(background/pawel-czerwinski-W10XfpqLu4Y-unsplash.jpg) center no-repeat fixed;
+    background: url(Images/pawel-czerwinski-W10XfpqLu4Y-unsplash.jpg) center no-repeat fixed;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -118,7 +118,7 @@ nav ul .how {
 }
 
 .enc,
-.dec {
+.dec{
     width: 9em;
     height: 35px;
     border-radius: 23px;
@@ -252,9 +252,9 @@ input:checked+.slider {
     box-shadow: 1px 1px 15px 1px lawngreen;
 }
 
-/* input:focus+.slider {
+input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
-} */
+}
 
 input:checked+.slider:before {
     -webkit-transform: translateX(26px);
@@ -303,7 +303,12 @@ input:checked+.slider:after {
     color: rgb(29, 185, 206);
     filter: drop-shadow(#4444dd 1px 1px 2px);
     zoom: 1.1;
-    transition: ease-in 0.2s;
+    transition: ease-in 0.12s;
+}
+
+.logo{
+width: 6.5em;
+height: 4.5em;
 }
 
 @media (width <=700px) {
