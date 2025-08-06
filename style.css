@@ -69,7 +69,7 @@ nav ul .how {
     margin: 5px 5px 0px 5px;
 }
 
-#descBtn {
+#descBtn, #descBtnMob1, #descBtnMob2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +83,7 @@ nav ul .how {
     border-radius: 5px;
 }
 
-#descBtn:hover {
+#descBtn:hover, #descBtnMob1:hover, #descBtnMob2:hover {
     animation: rotate 0.4s linear infinite;
 }
 
@@ -93,7 +93,7 @@ nav ul .how {
     }
 }
 
-#descBtn span {
+#descBtn span, #descBtnMob1 span, #descBtnMob2 span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -311,18 +311,21 @@ width: 50px;
 height: 50px;
 }
 
-@media (width <=700px) {
+.mobile {
+    display: none;
+}
+
+@media (width <=800px) {
     .content {
         flex-direction: column;
         flex-shrink: 1;
-        margin-bottom: 20px;
     }
 
     .nav {
         margin-bottom: 30px;
         max-width: 98vw;
     }
-    .encrypt {
+    .encrypt,.decrypt {
        margin-bottom: 30px; 
     }
     .switchEnc{
@@ -346,5 +349,15 @@ height: 50px;
     #description {
      margin-top: 15%;
      width: 60%;
+    }
+
+    .mobile {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px ;
+    }
+
+    .headline,.decrypt {
+        display: none;
     }
 }

@@ -23,8 +23,12 @@
         </ul>
     </nav>
     <h1 class="headline">Message encrypter</h1>
+    <div class="mobile">
+    <button class="how" id="descBtnMob1"><span>Encrypter</span></button>
+    <button class="how" id="descBtnMob2"><span>Decrypter</span></button>
+    </div>
     <main class="content" id="form" onclick="hideTextBox()">
-        <div class="encrypt">
+        <div class="encrypt" id="encryptSection">
             <div class="switchEnc">
                 <button class="enc" id="encBtn" title="Encrypt text!"><span class="encSpan">ENCRYPT</span></button>
                 <label for="switch" class="switch">
@@ -50,7 +54,7 @@
             <textarea id="textEnc" name="encryption container" placeholder="Enter text for encryption..."></textarea>
             <textarea name="encrypted output container" id="textEncOut"></textarea>
         </div>
-        <div class="decrypt">
+        <div class="decrypt" id="decryptSection">
             <div class="switchEnc">
                 <button class="dec" id="decBtn" title="Decrypt text!"><span class="decSpan">DECRYPT</span></button>
                 <select name="ciphers" id="decrypter-select" placeholder="Please choose an option"

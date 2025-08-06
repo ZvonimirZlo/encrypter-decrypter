@@ -11,6 +11,11 @@ const encryptSelect = document.getElementById('encrypter-select');
 const decryptSelect = document.getElementById('decrypter-select');
 const inputOne = document.getElementById('number1');
 const inputTwo = document.getElementById('number2');
+const showEncrypt = document.getElementById('descBtnMob1');
+const showDecrypt = document.getElementById('descBtnMob2');
+const encryptSection = document.getElementById('encryptSection');
+const decryptSection = document.getElementById('decryptSection');
+
 
 //Date object and instances needed to create correct time format
 const time = new Date();
@@ -43,6 +48,25 @@ document.body.addEventListener('mousemove', () => {
 const showHideTextBox = () => {
     description.style.display === "none" ? description.style.display = "block" : description.style.display = "none";
 }
+
+//Shows only encrypt section on smaller screens
+const showEncryptFunction = () => {
+  encryptSection.style.display = 'block';
+  decryptSection.style.display = 'none';
+  showEncrypt.style.background = 'red';
+  showDecrypt.style.background = 'linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b)'
+}
+
+//Shows only decrypt section on smaller screens
+const showDecryptFunction = () => {
+  decryptSection.style.display = 'block';
+  encryptSection.style.display = 'none';
+  showDecrypt.style.background = 'red';
+  showEncrypt.style.background = 'linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b)'
+}
+
+showEncrypt.onclick = showEncryptFunction;
+showDecrypt.onclick = showDecryptFunction;
 
 //Shows description 
 descriptionButton.onclick = showHideTextBox;
