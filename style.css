@@ -31,21 +31,21 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    height: 85vh;
     padding: 0;
     margin: auto;
 }
 
-.headline{
+.headline {
     display: flex;
     justify-content: center;
-    margin: 3%;
     background-image: linear-gradient(rgb(225, 0, 255), rgb(0, 195, 255));
     color: transparent;
     background-clip: text;
 }
 
 .nav {
-   display:inline-block;
+    display: inline-block;
 }
 
 .nav ul li a {
@@ -63,13 +63,14 @@ nav ul .how {
     color: #fff;
 }
 
-
 .logo,
 .how {
     margin: 5px 5px 0px 5px;
 }
 
-#descBtn, #descBtnMob1, #descBtnMob2 {
+#descBtn,
+#descBtnMob1,
+#descBtnMob2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +84,9 @@ nav ul .how {
     border-radius: 5px;
 }
 
-#descBtn:hover, #descBtnMob1:hover, #descBtnMob2:hover {
+#descBtn:hover,
+#descBtnMob1:hover,
+#descBtnMob2:hover {
     animation: rotate 0.4s linear infinite;
 }
 
@@ -93,7 +96,9 @@ nav ul .how {
     }
 }
 
-#descBtn span, #descBtnMob1 span, #descBtnMob2 span {
+#descBtn span,
+#descBtnMob1 span,
+#descBtnMob2 span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,7 +123,7 @@ nav ul .how {
 }
 
 .enc,
-.dec{
+.dec {
     width: 9em;
     height: 35px;
     border-radius: 23px;
@@ -128,13 +133,14 @@ nav ul .how {
     overflow: hidden;
 }
 
-.enc:hover, 
+.enc:hover,
 .dec:hover {
     box-shadow: 2px 2px 12px 2px rgb(163, 88, 233);
     transition: ease-in-out 0.2s;
 }
 
-.enc:before, .dec:before {
+.enc:before,
+.dec:before {
     content: '';
     position: absolute;
     height: 70px;
@@ -178,8 +184,10 @@ select {
 }
 
 select:hover {
-  box-shadow: 1px 1px 12px 1px var(--footerColor);  
-  transition: ease-in 0.2s;
+    background: #3C3C3C;
+    color: #12bcfe;
+    box-shadow: 1px 1px 12px 1px var(--footerColor);
+    transition: ease-in 0.2s;
 }
 
 .num {
@@ -286,7 +294,7 @@ input:checked+.slider:after {
     display: flex;
     align-items: center;
     justify-content: center;
-    color:var(--footerColor);
+    color: var(--footerColor);
     font-size: 12px;
     bottom: 0;
     position: relative;
@@ -295,20 +303,21 @@ input:checked+.slider:after {
 }
 
 .svg {
- color: var(--footerColor);
- margin: 2px;
+    color: var(--footerColor);
+    margin: 2px;
 }
 
-.svg:hover, a:hover {
+.svg:hover,
+a:hover {
     color: rgb(29, 185, 206);
     filter: drop-shadow(#4444dd 1px 1px 2px);
     zoom: 1.1;
     transition: ease-in 0.12s;
 }
 
-.logo{
-width: 50px;
-height: 50px;
+.logo {
+    width: 50px;
+    height: 50px;
 }
 
 .mobile {
@@ -325,10 +334,13 @@ height: 50px;
         margin-bottom: 30px;
         max-width: 98vw;
     }
-    .encrypt,.decrypt {
-       margin-bottom: 30px; 
+
+    .encrypt,
+    .decrypt {
+        margin-bottom: 30px;
     }
-    .switchEnc{
+
+    .switchEnc {
         flex-direction: column-reverse;
     }
 
@@ -337,27 +349,30 @@ height: 50px;
         height: 30vh;
     }
 
-    #encrypter-select, #decrypter-select {
+    #encrypter-select,
+    #decrypter-select {
         position: relative;
         width: 120px;
     }
 
-    .how, .logo {
+    .how,
+    .logo {
         transform: scale3d(0.8, 0.8, 1);
     }
 
     #description {
-     margin-top: 15%;
-     width: 60%;
+        margin-top: 15%;
+        width: 60%;
     }
 
     .mobile {
         display: flex;
         justify-content: center;
-        margin-bottom: 20px ;
+        margin-bottom: 20px;
     }
 
-    .headline,.decrypt {
+    .headline,
+    .decrypt {
         display: none;
     }
 }
