@@ -17,7 +17,7 @@ const encryptSection = document.getElementById('encryptSection');
 const decryptSection = document.getElementById('decryptSection');
 const form = document.getElementById('form');
 
-//Date object and instances needed to create correct time format
+//Date object and instances required to create correct time format
 const time = new Date();
 const year = time.getFullYear();
 const month = time.getMonth() + 1;
@@ -91,6 +91,7 @@ const showHideMethodEnc = () => {
 
 //**ENCRYPTION HANDLER**
 const handleEncryption = () => {
+    if(encryptTextBox.value === '') return;
     if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-S') encryptOut.innerHTML = `${rav_s(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -124,6 +125,7 @@ encryptSelect.onclick = changeInputValue;
 
 // **DECRYPTION HANDLER**
 const handleDecryption = () => {
+    if(decryptTextBox.value === '') return;
     if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
