@@ -1,7 +1,7 @@
 :root {
     --bodyBackground: #0d1117;
-    --encryptBtnBack: linear-gradient(to right, rgb(180, 34, 180), rgb(58, 139, 194));
-    --decryptBtnBack: linear-gradient(to right, rgb(58, 139, 194), rgb(180, 34, 180));
+    --encryptBtnBack: linear-gradient(to right, #a767e5, #12bcfe);
+    --decryptBtnBack: linear-gradient(to right, #12bcfe, #a767e5);
     --borderColor: rgb(14, 38, 54);
     --descButtonBack: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
     --txtAreaBack: linear-gradient(to left, #0d1117, #141924);
@@ -34,6 +34,11 @@ body {
     height: 85vh;
     padding: 0;
     margin: auto;
+}
+
+.logo {
+    width: 36px;
+    height: 38px;
 }
 
 .headline {
@@ -135,8 +140,8 @@ nav ul .how {
 
 .enc:hover,
 .dec:hover {
-    box-shadow: 2px 2px 12px 2px rgb(163, 88, 233);
-    transition: ease-in-out 0.2s;
+    background: linear-gradient(rgb(103, 9, 116), rgb(12, 85, 107));
+    transition: 200ms linear;
 }
 
 .enc:before,
@@ -313,11 +318,6 @@ a:hover {
     filter: drop-shadow(#4444dd 1px 1px 2px);
     zoom: 1.1;
     transition: ease-in 0.12s;
-}
-
-.logo {
-    width: 50px;
-    height: 50px;
 }
 
 .mobile {

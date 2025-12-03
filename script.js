@@ -15,7 +15,7 @@ const showEncrypt = document.getElementById('descBtnMob1');
 const showDecrypt = document.getElementById('descBtnMob2');
 const encryptSection = document.getElementById('encryptSection');
 const decryptSection = document.getElementById('decryptSection');
-
+const form = document.getElementById('form');
 
 //Date object and instances needed to create correct time format
 const time = new Date();
@@ -51,18 +51,18 @@ const showHideTextBox = () => {
 
 //Shows only encrypt section on smaller screens
 const showEncryptFunction = () => {
-  encryptSection.style.display = 'block';
-  decryptSection.style.display = 'none';
-  showEncrypt.style.background = 'red';
-  showDecrypt.style.background = 'linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b)'
+    encryptSection.style.display = 'block';
+    decryptSection.style.display = 'none';
+    showEncrypt.style.background = 'red';
+    showDecrypt.style.background = 'linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b)'
 }
 
 //Shows only decrypt section on smaller screens
 const showDecryptFunction = () => {
-  decryptSection.style.display = 'block';
-  encryptSection.style.display = 'none';
-  showDecrypt.style.background = 'red';
-  showEncrypt.style.background = 'linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b)'
+    decryptSection.style.display = 'block';
+    encryptSection.style.display = 'none';
+    showDecrypt.style.background = 'red';
+    showEncrypt.style.background = 'linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b)'
 }
 
 showEncrypt.onclick = showEncryptFunction;
@@ -74,6 +74,8 @@ descriptionButton.onclick = showHideTextBox;
 const hideTextBox = () => {
     description.style.display = "none";
 };
+
+form.onclick = hideTextBox;
 
 // Hides description text box on page load
 window.onload = () => {
@@ -89,14 +91,14 @@ const showHideMethodEnc = () => {
 
 //**ENCRYPTION HANDLER**
 const handleEncryption = () => {
-    if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}] `;
-    else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'RAV-S') encryptOut.innerHTML = `${rav_s(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'Alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'Substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'Multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'Vigenere') encryptOut.innerHTML = `${encryptVin(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (encryptSelect.value === 'ROT 13') encryptOut.innerHTML = `${rot13encrypter(encryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (encryptSelect.value === 'RAV-S') encryptOut.innerHTML = `${rav_s(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (encryptSelect.value === 'Alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (encryptSelect.value === 'Substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)}\n\n[Created: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (encryptSelect.value === 'Multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (encryptSelect.value === 'Vigenere') encryptOut.innerHTML = `${encryptVin(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (encryptSelect.value === 'ROT 13') encryptOut.innerHTML = `${rot13encrypter(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
 }
 encryptButton.onclick = handleEncryption;
 
@@ -122,21 +124,21 @@ encryptSelect.onclick = changeInputValue;
 
 // **DECRYPTION HANDLER**
 const handleDecryption = () => {
-    if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'Alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'Substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'Vigenere') decryptOut.innerHTML = `${decryptVin(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
-    else if (decryptSelect.value === 'ROT 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)} [Created: ${timeFormat}, ${showHideMethodEnc()}]`;
+    if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (decryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (decryptSelect.value === 'Alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (decryptSelect.value === 'Substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (decryptSelect.value === 'Vigenere') decryptOut.innerHTML = `${decryptVin(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (decryptSelect.value === 'ROT 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
 }
 decryptButton.onclick = handleDecryption;
 
 decryptSelect.onclick = changeInputValue;
 
 
-//ROT 13 handleEncryption handler
+// ROT 13 handleEncryption handler
 function rot13encrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -265,12 +267,12 @@ function encryptVin(text, key) {
 function decryptVin(enc, key) {
 
     key = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('').replace(/\s+/g, '');
-    
+
     if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character! Please enter a valid key.');
-    
+
     let decrypted = "";
     let j = 0;
-    
+
     for (let i = 0; i < enc.length; i++) {
         let currentLetter = enc[i];
         const A = 65;
@@ -454,6 +456,11 @@ function rav_sDec(str) {
         .map(x => String.fromCharCode(x))
         .join('')
 };
+
+
+
+
+
 
 
 
