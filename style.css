@@ -22,7 +22,7 @@ body {
     justify-content: center;
     flex-direction: column;
     min-height: 100vh;
-    min-width: 100vw;
+    max-width: 100vw;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -164,7 +164,7 @@ button:hover:before {
 }
 
 textarea {
-    height: 22vh;
+    height: 28vh;
     width: 40vw;
     background: var(--txtAreaBack);
     color: white;
@@ -324,6 +324,14 @@ a:hover {
     display: none;
 }
 
+.copy_paste {
+    margin-bottom: 10px;
+}
+
+.copy {
+    float: right;
+}
+
 @media (width <=800px) {
     .content {
         flex-direction: column;
@@ -331,7 +339,7 @@ a:hover {
     }
 
     .nav {
-        margin-bottom: 30px;
+        margin-bottom: 25%;
         max-width: 98vw;
     }
 
@@ -374,5 +382,8 @@ a:hover {
     .headline,
     .decrypt {
         display: none;
+    }
+    .footer {
+        margin-top: 20%;
     }
 }
