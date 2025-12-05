@@ -328,7 +328,7 @@ a:hover {
     margin-bottom: 10px;
 }
 
-.copy {
+.copy-paste {
     float: right;
 }
 
@@ -392,7 +392,7 @@ img {
     width:23px;
     height: 23px;
 }
-.copy{
+.copy-paste{
     background: transparent;
     border: #0d1117;
 }

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <!-- Navbar -->
     <nav class="nav">
         <ul>
             <li>
@@ -25,11 +25,14 @@
     <h1 class="headline">Encrypter</h1>
 
     <main class="content" id="form">
+        <!-- For mobile devices -->
         <div class="mobile">
             <button class="how" id="descBtnMob1"><span>Encrypter</span></button>
             <button class="how" id="descBtnMob2"><span>Decrypter</span></button>
         </div>
-        <div class="encrypt" id="encryptSection">
+
+        <!-- Encrypter section -->
+        <section class="encrypt" id="encryptSection">
             <div class="switchEnc">
                 <button class="enc" id="encBtn" title="Encrypt text!"><span class="encSpan">ENCRYPT</span></button>
                 <label for="switch" class="switch">
@@ -51,20 +54,31 @@
                 <input class="num" id="number1" type="number" min="1" max="100" title="Key"
                     placeholder="Enter key here!">
             </div>
-
+            <!-- Encryption input text box -->
             <textarea id="textEnc" name="encryption container" placeholder="Enter text for encryption..."></textarea>
             <div class="copy_paste">
-                <button class="copy"><img src="Images\o5fqkvqokvfqb72j2tg4c07bpj-bf3137751219c7d3490b2aea42cbacf8.png" alt=""></button>
-                <button class="copy" id="paste_encrypted"><img src="Images\cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png" alt=""></button>
+                <button class="copy-paste"><img
+                        src="Images/delete.png" alt="delete icon"></button>
+                <button class="copy-paste" id="paste_encrypted"><img
+                        src="Images\cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
+                        alt="paste icon"></button>
             </div>
+            <!-- Encrypted output text box -->
             <textarea name="encrypted output container" id="textEncOut"></textarea>
             <div class="copy_paste">
-            <button class="copy"><img src="Images\o5fqkvqokvfqb72j2tg4c07bpj-bf3137751219c7d3490b2aea42cbacf8.png" alt=""></button>
-              <button class="copy"><img src="Images\cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png" alt=""></button>
-              <button class="copy"><img src="Images\cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png" alt=""></button>
+                <button class="copy-paste"><img
+                        src="Images/delete.png" alt="delete icon"></button>
+                <button class="copy-paste"><img
+                        src="Images\cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
+                        alt="paste icon"></button>
+                <button class="copy-paste"><img
+                        src="Images\cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png"
+                        alt="copy icon"></button>
             </div>
-        </div>
-        <div class="decrypt" id="decryptSection">
+        </section>
+
+        <!-- Decrypter section -->
+        <section class="decrypt" id="decryptSection">
             <div class="switchEnc">
                 <button class="dec" id="decBtn" title="Decrypt text!"><span class="decSpan">DECRYPT</span></button>
                 <select name="ciphers" id="decrypter-select" placeholder="Please choose an option"
@@ -81,17 +95,26 @@
                 </select>
                 <input class="num" id="number2" title="Key" placeholder="Enter key here!">
             </div>
+            <!-- Decrypted input box -->
             <textarea name="decryption container" id="textDec" placeholder="Enter text for decryption..."></textarea>
             <div class="copy_paste">
-                <button class="copy"><img src="Images\o5fqkvqokvfqb72j2tg4c07bpj-bf3137751219c7d3490b2aea42cbacf8.png" alt=""></button>
-              <button class="copy"><img src="Images\cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png" alt=""></button>
-              <button class="copy"><img src="Images\cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png" alt=""></button>
+                <button class="copy-paste"><img
+                        src="Images/delete.png" 
+                        alt="delete icon"></button>
+                <button class="copy-paste"><img
+                        src="Images\cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
+                        alt="paste icon"></button>
+                <button class="copy-paste"><img
+                        src="Images\cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png"
+                        alt="copy icon"></button>
             </div>
+            <!-- Decrypted output box -->
             <textarea name="decrypted text container" id="textDecOut"></textarea>
             <div class="copy_paste">
-                <button class="copy"><img src="Images\o5fqkvqokvfqb72j2tg4c07bpj-bf3137751219c7d3490b2aea42cbacf8.png" alt=""></button>
+                <button class="copy-paste"><img
+                        src="Images\delete.png" alt="delete icon"></button>
             </div>
-        </div>
+        </section>
 
     </main>
 
