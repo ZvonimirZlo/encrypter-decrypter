@@ -7,8 +7,8 @@
     <meta name="description" content="Author: ZvonimirZlo, Application for encrypting and decrypting text.">
     <link rel="stylesheet" href="style.css">
     <title>Encrypter</title>
+    <link rel="icon" type="image/x-icon" href="Images/logo-small.png">
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="nav">
@@ -55,9 +55,9 @@
                     placeholder="Enter key here!">
             </div>
             <!-- Encryption input text box -->
-            <textarea id="textEnc" name="encryption container" placeholder="Enter text for encryption..."></textarea>
+            <textarea class="glass-card" id="textEnc" name="encryption container" placeholder="Enter text for encryption..."></textarea>
             <div class="copy_paste">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!">
+                <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!" id="delete-encryption-input">
                 </button>
                 <button class="copy-paste" id="paste_encrypted"><img
                         src="Images/cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
@@ -98,18 +98,18 @@
                 </select>
                 <input class="num" id="number2" title="Key" placeholder="Enter key here!">
             </div>
-            <!-- Decrypted input box -->
+            <!-- Decryption input box -->
             <textarea name="decryption container" id="textDec" placeholder="Enter text for decryption..."></textarea>
             <div class="copy_paste">
                 <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!">
                 </button>
                 <button class="copy-paste"><img
-                        src="Images/cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
-                        alt="paste icon" title="Paste!">
-                </button>
-                <button class="copy-paste"><img
                         src="Images/cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png"
                         alt="copy icon" title="Copy!">
+                </button>
+                <button class="copy-paste"><img
+                        src="Images/cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
+                        alt="paste icon" title="Paste!">
                 </button>
             </div>
             <!-- Decrypted output box -->
@@ -119,9 +119,8 @@
                 </button>
             </div>
         </section>
-
     </main>
-
+    <!-- Footer -->
     <footer class="footer">© Encrypter by ZvonimirZlo
         <a href="https://github.com/ZvonimirZlo" rel='noopener noreferer' aria-label="Link to Github">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" viewBox="0 0 16 16"

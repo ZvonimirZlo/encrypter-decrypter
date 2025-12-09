@@ -17,7 +17,8 @@ const encryptSection = document.getElementById('encryptSection');
 const decryptSection = document.getElementById('decryptSection');
 const form = document.getElementById('form');
 const copyEncrypted = document.getElementById('copy_encrypted_txt');
-const pasteEncrypted = document.getElementById('paste_encrypted');
+const pasteInEncryptionTxtBox = document.getElementById('paste_encrypted');
+const deleteEncryptionInputText = document.getElementById('delete-encryption-input');
 
 const copyText = () => {
     const text = encryptOut.value;
@@ -26,14 +27,16 @@ const copyText = () => {
         .catch(err => console.error(err))
 }
 
-const pasteText = () => {
+const pasteText = async () => {
     navigator.clipboard.readText()
         .then((clipText) => (encryptTextBox.innerText = clipText))
         .catch(err => console.error(err))
 }
+deleteEncryptionInputText.addEventListener('click', async () => {
+   encryptTextBox.innerHTML = ''
+})
+pasteInEncryptionTxtBox.onclick = pasteText;
 
-
-pasteEncrypted.onclick = pasteText;
 
 // copyEncrypted.onclick = copyText;
 
@@ -118,7 +121,7 @@ const handleEncryption = () => {
     else if (encryptSelect.value === 'Alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'Substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)}\n\n[Created: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'Multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
-    else if (encryptSelect.value === 'Vigenere') encryptOut.innerHTML = `${encryptVin(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (encryptSelect.value === 'Vigenere') encryptOut.innerHTML = `${encryptVigenere(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'ROT 13') encryptOut.innerHTML = `${rot13encrypter(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
 }
 encryptButton.onclick = handleEncryption;
@@ -152,7 +155,7 @@ const handleDecryption = () => {
     else if (decryptSelect.value === 'Alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'Substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
-    else if (decryptSelect.value === 'Vigenere') decryptOut.innerHTML = `${decryptVin(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
+    else if (decryptSelect.value === 'Vigenere') decryptOut.innerHTML = `${decryptVigenere(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'ROT 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
 }
 decryptButton.onclick = handleDecryption;
@@ -160,7 +163,7 @@ decryptButton.onclick = handleDecryption;
 decryptSelect.onclick = changeInputValue;
 
 
-// ROT 13 handleEncryption handler
+// ROT 13 encryption handler
 function rot13encrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -168,7 +171,7 @@ function rot13encrypter(str) {
     return str.replace(/[a-zA-Z0-9]/g, handleEncryption);
 };
 
-//ROT 13 handleDecryption handler
+//ROT 13 decryption handler
 function rot13decrypter(str) {
     const rot = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM0123456789';
     const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -177,7 +180,7 @@ function rot13decrypter(str) {
 };
 
 
-//Alternating split handleEncryption handler
+//Alternating split encryption handler
 function encryptAltSplit(text, n) {
     n = inputOne.value;
     if (n <= 0 || n > 100) {
@@ -190,7 +193,7 @@ function encryptAltSplit(text, n) {
     return text;
 };
 
-//Alternating split handleDecryption handler
+//Alternating split decryption handler
 function decryptAltSplit(text, n) {
     n = inputTwo.value;
     if (n <= 0 || n > 100) {
@@ -204,22 +207,22 @@ function decryptAltSplit(text, n) {
     return text;
 }
 
-//Substitution handleEncryption handler
+//Substitution encryption handler
 function encryptSubstitution(str) {
     return str.replace(/./g, x => x.charCodeAt(0) + 58);
 }
 
-//Substitution handleDecryption handler
+//Substitution decryption handler
 function decryptSubstitution(str) {
     return str.replace(/1?\d{2}/g, i => String.fromCharCode(+i - 58));
 }
 
-//Multi six handleEncryption handler
+//Multi six encryption handler
 function encodeMultSix(str) {
     return str.split('').map(x => x.charCodeAt(str) * 6).map(x => String.fromCharCode(x)).join('');
 }
 
-//Multi six handleDecryption handler
+//Multi six decryption handler
 function decodeMultSix(str) {
     return str.split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
 }
@@ -262,7 +265,7 @@ function mod(n, m) {
 
 
 //Vigenere cipher encryption handler
-function encryptVin(text, key) {
+function encryptVigenere(text, key) {
     key = inputOne.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
 
     if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character! Please enter a valid key.');
@@ -286,7 +289,7 @@ function encryptVin(text, key) {
 };
 
 //Vigenere cipher decryption handler
-function decryptVin(enc, key) {
+function decryptVigenere(enc, key) {
 
     key = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('').replace(/\s+/g, '');
 
@@ -325,7 +328,7 @@ function decryptVin(enc, key) {
 
 //*HELPER FUNCTIONS FOR RAV*
 
-//Number to roman handler
+//Numbers to roman numerals handler
 const toRomeHandler = (integer) => {
     let output = '';
     do {
@@ -375,7 +378,7 @@ const toRomeHandler = (integer) => {
     return output.toLowerCase();
 };
 
-//Roman to number handler
+//Roman numerals to numbers handler
 const fromRomeHandler = (romanNum) => {
     const map = {
         I: 1,
@@ -479,29 +482,6 @@ function rav_sDec(str) {
         .join('')
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // <SplineScene 
+        //     scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+        //   />
