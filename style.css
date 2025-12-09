@@ -1,10 +1,10 @@
 :root {
     --bodyBackground: #0d1117;
-    --encryptBtnBack: linear-gradient(to right, #a767e5, #12bcfe);
-    --decryptBtnBack: linear-gradient(to right, #12bcfe, #a767e5);
+    --encryptBtnBack: linear-gradient(to right, #122afe, #b631d1);
+    --decryptBtnBack: linear-gradient(to right, #b631d1, #122afe);
     --borderColor: rgb(14, 38, 54);
     --descButtonBack: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
-    --txtAreaBack: linear-gradient(to left, #0d1117, #141924);
+    --txtAreaBack: linear-gradient(to left, #52565c, #2c3446);
     --footerColor: #4894ce;
 }
 
@@ -16,7 +16,7 @@
 
 body {
     color: white;
-    background: url(Images/pawel-czerwinski-W10XfpqLu4Y-unsplash.jpg) center no-repeat fixed;
+    background: url(Images/milad-fakurian-1RWMfvv2UW4-unsplash.jpg) center no-repeat fixed;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -164,11 +164,11 @@ button:hover:before {
 }
 
 textarea {
-    height: 28vh;
-    width: 40vw;
+    height: 24vh;
+    width: 35vw;
     background: var(--txtAreaBack);
     color: white;
-    background: var(--txtAreaBack) padding-box, linear-gradient(to left, rgb(12, 32, 46), rgb(142, 52, 145)) border-box;
+    /* background: var(--txtAreaBack) padding-box, linear-gradient(to left, rgb(12, 32, 46), rgb(142, 52, 145)) border-box; */
     border-radius: 8px;
     border: 3px solid transparent;
     margin: 5px;
@@ -177,22 +177,42 @@ textarea {
     padding: 5px;
     display: flex;
     align-items: center;
-    flex-shrink: 1;
+background: rgba(255, 255, 255, 0.06);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(5px);
+border: 2px solid rgba(255, 255, 255, 0.3);
+caret-color: white;
+transition: transform .2s;
 }
 
+  textarea:hover {
+  -ms-transform: scale(1.008); 
+  -webkit-transform: scale(1.008);
+  transform: scale(1.008); 
+}  
 
 select {
-    background: #0E6EB8;
+    background: var(--decryptBtnBack);
     color: #fff;
     border-radius: 24px;
     height: 33px;
 }
+#decrypter-select {
+    background: var(--encryptBtnBack);
+}
 
-select:hover {
+#decrypter-select:hover,#encrypter-select:hover, select option {
     background: #3C3C3C;
-    color: #12bcfe;
+    color: #03fce7;
     box-shadow: 1px 1px 12px 1px var(--footerColor);
     transition: ease-in 0.2s;
+}
+
+textarea::placeholder {
+  color: rgb(12, 224, 12);
+  opacity: .8;
 }
 
 .num {
@@ -330,6 +350,7 @@ a:hover {
 
 .copy-paste {
     float: right;
+    padding-left: 5px;
 }
 
 @media (width <=800px) {
@@ -396,3 +417,4 @@ img {
     background: transparent;
     border: #0d1117;
 }
+
