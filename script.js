@@ -115,6 +115,7 @@ const showHideMethodEnc = () => {
 //**ENCRYPTION HANDLER**
 const handleEncryption = () => {
     if (encryptTextBox.value === '') return;
+    if(encryptSelect.value === 'option') alert('Please select encryption method!')
     if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-S') encryptOut.innerHTML = `${rav_s(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -149,6 +150,7 @@ encryptSelect.onclick = changeInputValue;
 // **DECRYPTION HANDLER**
 const handleDecryption = () => {
     if (decryptTextBox.value === '') return;
+    if(decryptSelect.value === 'option') alert('Please select decryption method!');
     if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
