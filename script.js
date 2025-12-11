@@ -37,7 +37,12 @@ deleteEncryptionInputText.addEventListener('click', async () => {
 })
 pasteInEncryptionTxtBox.onclick = pasteText;
 
-
+//Prevents functions blocking when text is draged and droped in encryptTextBox
+encryptTextBox.addEventListener("drop", (ev) => {
+  ev.preventDefault();
+  const data = ev.dataTransfer.getData("text/plain");
+  ev.target.append(data);
+});
 // copyEncrypted.onclick = copyText;
 
 //Date object and instances required to create correct time format
