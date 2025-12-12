@@ -136,12 +136,13 @@ window.onload = () => {
 // Shows/hides encryption method depending on switcher position
 const showHideMethodEnc = () => {
     const slider = document.getElementById('switch');
-    return slider.checked === true ? `Method: ${encryptSelect.value} ${inputOne.value}` : `Method hidden!`;
+    return slider.checked === true ? `Method: ${encryptSelect.value} ${inputOne.value}` : `Method hidden.`;
 }
 
 
 //**ENCRYPTION HANDLER**
 const handleEncryption = () => {
+    if(encryptTextBox.value === '') return;
     if(encryptSelect.value === 'option') alert('Please select encryption method!')
     if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -151,7 +152,6 @@ const handleEncryption = () => {
     else if (encryptSelect.value === 'Multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'Vigenere') encryptOut.innerHTML = `${encryptVigenere(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'ROT 13') encryptOut.innerHTML = `${rot13encrypter(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
-    else return;
 }
 encryptButton.onclick = handleEncryption;
 
@@ -444,6 +444,7 @@ function ravEso(str) {
 
 //RAV-ESO decryption handler
 function ravEsoDec(str) {
+    str = str.replace(/[\\#,$~%.'":*?<>\d\w]/gi,'') //cleans the input string
     const repl = 'ivxlcdm';
     const alpha = '][}+)(&';
     const replacer = (x) => repl[alpha.indexOf(x)];
