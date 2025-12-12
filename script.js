@@ -3,7 +3,7 @@ const descriptionButton = document.getElementById('descBtn');
 const description = document.getElementById("description");
 const encryptTextBox = document.getElementById('textEnc')
 const encryptOut = document.getElementById('textEncOut');
-const decryptTextBox = document.getElementById('textDec');
+const decryptTextBox = document.getElementById('text-for-decryption');
 const decryptOut = document.getElementById('textDecOut');
 const encryptButton = document.getElementById('encBtn');
 const decryptButton = document.getElementById('decBtn');
@@ -51,7 +51,7 @@ deleteEncryptedText.addEventListener('click', async () => {
 pasteInEncryptionTxtBox.onclick = pasteEncryptionText;
 
 
-//Copy text from encrypted text box
+// Copy text from encrypted text box
 copyFromEncryptedTextBox.onclick = copyEncryptedText;
 
 //Prevents functions blocking when text is draged and droped 
@@ -61,6 +61,11 @@ encryptTextBox.addEventListener("drop", (ev) => {
   ev.target.append(data);
 });
 
+decryptTextBox.addEventListener("drop", (ev) => {
+  ev.preventDefault();
+  const data = ev.dataTransfer.getData("text/plain");
+  ev.target.append(data);
+});
 
 
 //Date object and instances required to create correct time format
@@ -172,6 +177,7 @@ encryptSelect.onclick = changeInputValue;
 
 // **DECRYPTION HANDLER**
 const handleDecryption = () => {
+    if(decryptTextBox.value === '') return;
     if(decryptSelect.value === 'option') alert('Please select decryption method!');
     if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -181,7 +187,6 @@ const handleDecryption = () => {
     else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'Vigenere') decryptOut.innerHTML = `${decryptVigenere(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'ROT 13') decryptOut.innerHTML = `${rot13decrypter(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
-    else return;
 }
 decryptButton.onclick = handleDecryption;
 
