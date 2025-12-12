@@ -54,7 +54,7 @@ pasteInEncryptionTxtBox.onclick = pasteEncryptionText;
 // Copy text from encrypted text box
 copyFromEncryptedTextBox.onclick = copyEncryptedText;
 
-//Prevents functions blocking when text is draged and droped 
+//Prevents functions blocking when text is drag and dropped 
 encryptTextBox.addEventListener("drop", (ev) => {
   ev.preventDefault();
   const data = ev.dataTransfer.getData("text/plain");
@@ -254,7 +254,7 @@ function encodeMultSix(str) {
 
 //Multi six decryption handler
 function decodeMultSix(str) {
-    return str.split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
+    return str.replace(/[\\#,$~%.'":*?<>\d\w]/gi,'').split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
 }
 
 //*HELPER FUNCTIONS
@@ -512,7 +512,3 @@ function rav_sDec(str) {
         .map(x => String.fromCharCode(x))
         .join('')
 };
-
-        // <SplineScene 
-        //     scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-        //   />
