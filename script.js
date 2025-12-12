@@ -17,33 +17,51 @@ const encryptSection = document.getElementById('encryptSection');
 const decryptSection = document.getElementById('decryptSection');
 const form = document.getElementById('form');
 const copyEncrypted = document.getElementById('copy_encrypted_txt');
-const pasteInEncryptionTxtBox = document.getElementById('paste_encrypted');
+const pasteInEncryptionTxtBox = document.getElementById('paste-encryption');
 const deleteEncryptionInputText = document.getElementById('delete-encryption-input');
+const copyFromEncryptedTextBox = document.getElementById('copy-from-encrypted');
+const deleteEncryptedText = document.getElementById('delete-encryped-text');
 
-const copyText = () => {
+//Paste text in encryption text box
+const pasteEncryptionText = async () => {
+    navigator.clipboard.readText()
+        .then((clipText) => (encryptTextBox.innerText = clipText))
+        .catch(err => console.error(err))
+}
+
+//Encrypted text copy handler
+const copyEncryptedText = async () => {
     const text = encryptOut.value;
     navigator.clipboard.writeText(text.slice(0, text.indexOf('Created')))
         .then(() => alert('Copied!'))
         .catch(err => console.error(err))
 }
 
-const pasteText = async () => {
-    navigator.clipboard.readText()
-        .then((clipText) => (encryptTextBox.innerText = clipText))
-        .catch(err => console.error(err))
-}
+//Deletes text in encryption text box
 deleteEncryptionInputText.addEventListener('click', async () => {
    encryptTextBox.innerHTML = ''
 })
-pasteInEncryptionTxtBox.onclick = pasteText;
 
-//Prevents functions blocking when text is draged and droped in encryptTextBox
+//Deletes encrypted text
+deleteEncryptedText.addEventListener('click', async () => {
+   encryptOut.innerHTML = ''
+})
+
+//Paste in encryped text box
+pasteInEncryptionTxtBox.onclick = pasteEncryptionText;
+
+
+//Copy text from encrypted text box
+copyFromEncryptedTextBox.onclick = copyEncryptedText;
+
+//Prevents functions blocking when text is draged and droped 
 encryptTextBox.addEventListener("drop", (ev) => {
   ev.preventDefault();
   const data = ev.dataTransfer.getData("text/plain");
   ev.target.append(data);
 });
-// copyEncrypted.onclick = copyText;
+
+
 
 //Date object and instances required to create correct time format
 const time = new Date();
