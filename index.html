@@ -22,9 +22,11 @@
             </li>
         </ul>
     </nav>
+    
     <h1 class="headline">Encrypter</h1>
 
     <main class="content" id="form">
+
         <!-- For mobile devices -->
         <div class="mobile">
             <button class="how" id="descBtnMob1"><span>Encrypter</span></button>
@@ -35,10 +37,12 @@
         <section class="encrypt" id="encryptSection">
             <div class="switchEnc">
                 <button class="enc" id="encBtn" title="Encrypt text!"><span class="encSpan">ENCRYPT</span></button>
+                <!-- Show/hide method -->
                 <label for="switch" class="switch">
                     <input type="checkbox" id="switch">
                     <span class="slider"></span>
                 </label>
+                <!-- Select encrypting method -->
                 <select name="ciphers" id="encrypter-select" placeholder="Please choose an option"
                     title="Choose encryption mathod!" required>
                     <option value="option">Method options</option>
@@ -51,11 +55,14 @@
                     <option value="Alternating split">Alternating split</option>
                     <option value="Substitution">Substitution</option>
                 </select>
+                <!-- Key input for Vigenere and alternating split methods -->
                 <input class="num" id="number1" type="number" min="1" max="100" title="Key"
                     placeholder="Enter key here!">
             </div>
             <!-- Encryption input text box -->
             <textarea class="glass-card" id="textEnc" name="encryption container" placeholder="Enter text for encryption..." dropzone="true"></textarea>
+            
+            <!-- Paste, delete buttons -->
             <div class="copy_paste">
                 <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!" id="delete-encryption-input">
                 </button>
@@ -66,6 +73,7 @@
             </div>
             <!-- Encrypted output text box -->
             <textarea name="encrypted output container" id="textEncOut" readonly="readonly"></textarea>
+            <!-- Copy, delete buttons -->
             <div class="copy_paste">
                 <button class="copy-paste" id="delete-encryped-text"><img src="Images/delete.png" 
                     alt="delete icon" title="Delete!">
@@ -93,10 +101,13 @@
                     <option value="Alternating split">Alternating split</option>
                     <option value="Substitution">Substitution</option>
                 </select>
+                <!-- Key input for Vigenere and alternating split methods -->
                 <input class="num" id="number2" title="Key" placeholder="Enter key here!">
             </div>
             <!-- Decryption input box -->
             <textarea name="decryption container" id="text-for-decryption" placeholder="Enter text for decryption..."></textarea>
+            
+            <!-- Copy, paste, delete buttons -->
             <div class="copy_paste">
                 <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!">
                 </button>
@@ -111,6 +122,8 @@
             </div>
             <!-- Decrypted output box -->
             <textarea name="decrypted text container" id="textDecOut" readonly="readonly"></textarea>
+            
+            <!-- Delete button -->
             <div class="copy_paste">
                 <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!">
                 </button>
