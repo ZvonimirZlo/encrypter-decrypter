@@ -25,7 +25,7 @@ const deleteEncryptedText = document.getElementById('delete-encryped-text');
 //Paste text in encryption text box
 const pasteEncryptionText = async () => {
     navigator.clipboard.readText()
-        .then((clipText) => (encryptTextBox.innerText = clipText))
+        .then((clipText) => (encryptTextBox.value = clipText))
         .catch(err => console.error(err))
 }
 
@@ -39,7 +39,7 @@ const copyEncryptedText = async () => {
 
 //Deletes text in encryption text box
 deleteEncryptionInputText.addEventListener('click', async () => {
-   encryptTextBox.innerHTML = ''
+   encryptTextBox.value = ''
 })
 
 //Deletes encrypted text
@@ -54,17 +54,13 @@ pasteInEncryptionTxtBox.onclick = pasteEncryptionText;
 // Copy text from encrypted text box
 copyFromEncryptedTextBox.onclick = copyEncryptedText;
 
-//Prevents functions blocking when text is drag and dropped 
-encryptTextBox.addEventListener("drop", (ev) => {
-  ev.preventDefault();
-  const data = ev.dataTransfer.getData("text/plain");
-  ev.target.append(data);
+//Prevents drag and dropp block
+encryptTextBox.addEventListener("dragover", (event) => {
+  event.dataTransfer.dropEffect = "move";
 });
 
-decryptTextBox.addEventListener("drop", (ev) => {
-  ev.preventDefault();
-  const data = ev.dataTransfer.getData("text/plain");
-  ev.target.append(data);
+decryptTextBox.addEventListener("dragover", (event) => {
+  event.dataTransfer.dropEffect = "move";
 });
 
 
