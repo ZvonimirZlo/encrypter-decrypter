@@ -8,22 +8,25 @@
     <link rel="stylesheet" href="style.css">
     <title>Encrypter</title>
     <link rel="icon" type="image/x-icon" href="Images/logo-small.png">
+      <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="nav">
         <ul>
             <li>
-                <img src="Images/logo-small.png" class="logo" alt="logo image">
-                <button class="how" id="descBtn"><span>How it works?</span></button>
+                <img src="Images/logo-small.png" class="logo animate__animated animate__bounce animate__delay-.5s" alt="logo image">
+                <button class="how animate__animated animate__bounce animate__delay-3s" id="descBtn"><span>How it works?</span></button>
                 <div name="description" id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Exercitationem debitis, minima quia reprehenderit et quis minus aliquam delectus, consectetur,
                     doloremque illo! Atque animi eligendi labore maxime, nobis eaque temporibus officia?</div>
             </li>
         </ul>
     </nav>
-    
-    <h1 class="headline">Encrypter</h1>
+
+    <h1 class="headline animate__animated animate__fadeInDown">Encrypter</h1>
 
     <main class="content" id="form">
 
@@ -33,9 +36,9 @@
             <button class="how" id="descBtnMob2"><span>Decrypter</span></button>
         </div>
 
-        <!-- Encrypter section -->
+        <!-- ENCRYPTER SECTION -->
         <section class="encrypt" id="encryptSection">
-            <div class="switchEnc">
+            <div class="switchEnc animate__animated animate__fadeInDown animate__delay-1s">
                 <button class="enc" id="encBtn" title="Encrypt text!"><span class="encSpan">ENCRYPT</span></button>
                 <!-- Show/hide method -->
                 <label for="switch" class="switch">
@@ -44,7 +47,8 @@
                 </label>
                 <!-- Select encrypting method -->
                 <select name="ciphers" id="encrypter-select" placeholder="Please choose an option"
-                    title="Choose encryption mathod!" required>
+                
+                    title="Choose encryption method!" required>
                     <option value="option">Method options</option>
                     <option value="RAV-ESO">RAV-ESO</option>
                     <option value="RAV-N">RAV-N</option>
@@ -60,34 +64,36 @@
                     placeholder="Enter key here!">
             </div>
             <!-- Encryption input text box -->
-            <textarea class="glass-card" id="textEnc" name="encryption container" placeholder="Enter text for encryption..." dropzone="true"></textarea>
-            
+            <textarea class="animate__animated animate__fadeInLeft glass-card txt-area-one" id="textEnc" name="encryption container"
+                placeholder="Enter text for encryption..." dropzone="true"></textarea>
+
             <!-- Paste, delete buttons -->
-            <div class="copy_paste">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!" id="delete-encryption-input">
+            <div class="buttons-one copy_paste animate__animated animate__fadeInDown">
+                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!"
+                        id="delete-encryption-input">
                 </button>
                 <button class="copy-paste" id="paste-encryption"><img
                         src="Images/cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
-                        alt="paste icon" title="Paste!">
+                        alt="paste button" title="Paste!">
                 </button>
             </div>
             <!-- Encrypted output text box -->
-            <textarea name="encrypted output container" id="textEncOut" readonly="readonly"></textarea>
+            <textarea name="encrypted output container" id="textEncOut" readonly="readonly" class="txt-area-two animate__animated animate__fadeInLeft"></textarea>
             <!-- Copy, delete buttons -->
-            <div class="copy_paste">
-                <button class="copy-paste" id="delete-encryped-text"><img src="Images/delete.png" 
-                    alt="delete icon" title="Delete!">
+            <div class="buttons-two copy_paste animate__animated animate__fadeInDown">
+                <button class="copy-paste" id="delete-encryped-text"><img src="Images/delete.png" alt="delete button"
+                        title="Delete!">
                 </button>
                 <button class="copy-paste" id="copy-from-encrypted"><img
                         src="Images/cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png"
-                        alt="copy icon" title="Copy!">
+                        alt="copy button" title="Copy!">
                 </button>
             </div>
         </section>
 
-        <!-- Decrypter section -->
+        <!-- DECRYPTER SECTION -->
         <section class="decrypt" id="decryptSection">
-            <div class="switchEnc">
+            <div class="switchEnc animate__animated animate__fadeInDown animate__delay-1s">
                 <button class="dec" id="decBtn" title="Decrypt text!"><span class="decSpan">DECRYPT</span></button>
                 <select name="ciphers" id="decrypter-select" placeholder="Please choose an option"
                     title="Choose decryption method!" required>
@@ -105,33 +111,37 @@
                 <input class="num" id="number2" title="Key" placeholder="Enter key here!">
             </div>
             <!-- Decryption input box -->
-            <textarea name="decryption container" id="text-for-decryption" placeholder="Enter text for decryption..."></textarea>
-            
+            <textarea name="decryption container" id="text-for-decryption"
+                placeholder="Enter text for decryption..." class="txt-area-three animate__animated animate__fadeInRight">
+        
+            </textarea>
+
             <!-- Copy, paste, delete buttons -->
-            <div class="copy_paste">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!">
+            <div class="buttons-three copy_paste animate__animated animate__fadeInDown">
+                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!">
                 </button>
                 <button class="copy-paste"><img
                         src="Images/cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png"
-                        alt="copy icon" title="Copy!">
+                        alt="copy button" title="Copy!">
                 </button>
                 <button class="copy-paste"><img
                         src="Images/cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
-                        alt="paste icon" title="Paste!">
+                        alt="paste button" title="Paste!">
                 </button>
             </div>
             <!-- Decrypted output box -->
-            <textarea name="decrypted text container" id="textDecOut" readonly="readonly"></textarea>
-            
+            <textarea name="decrypted text container" id="textDecOut" readonly="readonly"
+            class="txt-area-four animate__animated animate__fadeInRight"></textarea>
+
             <!-- Delete button -->
-            <div class="copy_paste">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete icon" title="Delete!">
+            <div class="buttons-four copy_paste animate__animated animate__fadeInDown animate">
+                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!">
                 </button>
             </div>
         </section>
     </main>
     <!-- Footer -->
-    <footer class="footer">© Encrypter by ZvonimirZlo
+    <footer class="footer animate__animated animate__fadeInDown animate__delay-2s">© Encrypter by ZvonimirZlo
         <a href="https://github.com/ZvonimirZlo" rel='noopener noreferer' aria-label="Link to Github">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" viewBox="0 0 16 16"
                 class="svg">

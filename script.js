@@ -39,12 +39,12 @@ const copyEncryptedText = async () => {
 
 //Deletes text in encryption text box
 deleteEncryptionInputText.addEventListener('click', async () => {
-   encryptTextBox.value = ''
+    encryptTextBox.value = ''
 })
 
 //Deletes encrypted text
 deleteEncryptedText.addEventListener('click', async () => {
-   encryptOut.innerHTML = ''
+    encryptOut.innerHTML = ''
 })
 
 //Paste in encryped text box
@@ -56,11 +56,11 @@ copyFromEncryptedTextBox.onclick = copyEncryptedText;
 
 //Prevents drag and dropp block
 encryptTextBox.addEventListener("dragover", (event) => {
-  event.dataTransfer.dropEffect = "move";
+    event.dataTransfer.dropEffect = "move";
 });
 
 decryptTextBox.addEventListener("dragover", (event) => {
-  event.dataTransfer.dropEffect = "move";
+    event.dataTransfer.dropEffect = "move";
 });
 
 
@@ -80,12 +80,12 @@ const dayNames = ["Sunday", "Monday", "Tuesday", 'Wednesday', 'Thursday', 'Frida
 const timeFormat = `${dayNames[day]} ${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
 
 
-//Shows inputOne if Vigenere cipher or Alternating split 
+//Shows inputOne if Vigenere cipher or Alternating split is selected 
 document.body.addEventListener('mousemove', () => {
     encryptSelect.value === 'Vigenere' || encryptSelect.value === 'Alternating split' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
 });
 
-//Shows inputTwo if Vigenere cipher or Alternating split 
+//Shows inputTwo if Vigenere cipher or Alternating split is selected 
 document.body.addEventListener('mousemove', () => {
     decryptSelect.value === 'Vigenere' || decryptSelect.value === 'Alternating split' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
 })
@@ -138,8 +138,8 @@ const showHideMethodEnc = () => {
 
 //**ENCRYPTION HANDLER**
 const handleEncryption = () => {
-    if(encryptTextBox.value === '') return;
-    if(encryptSelect.value === 'option') alert('Please select encryption method!')
+    if (encryptTextBox.value === '') alert('Nothing to encrypt, enter text in encryption text box!')
+    if (encryptSelect.value === 'option') alert('Please select encryption method!')
     if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-S') encryptOut.innerHTML = `${rav_s(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -173,8 +173,8 @@ encryptSelect.onclick = changeInputValue;
 
 // **DECRYPTION HANDLER**
 const handleDecryption = () => {
-    if(decryptTextBox.value === '') return;
-    if(decryptSelect.value === 'option') alert('Please select decryption method!');
+    if (decryptTextBox.value === '') alert('Nothing to decrypt, enter text in decryption text box!')
+    if (decryptSelect.value === 'option') alert('Please select decryption method!');
     if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -250,7 +250,7 @@ function encodeMultSix(str) {
 
 //Multi six decryption handler
 function decodeMultSix(str) {
-    return str.replace(/[\\#,$~%.'":*?<>\d\w]/gi,'').split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
+    return str.replace(/[\\#,$~%.'":*?<>\d\w]/gi, '').split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
 }
 
 //*HELPER FUNCTIONS
@@ -440,7 +440,7 @@ function ravEso(str) {
 
 //RAV-ESO decryption handler
 function ravEsoDec(str) {
-    str = str.replace(/[\\#,$~%.'":*?<>\d\w]/gi,'') //cleans the input string
+    str = str.replace(/[\\#,$~%.'":*?<>\d\w]/gi, '') //cleans the input string
     const repl = 'ivxlcdm';
     const alpha = '][}+)(&';
     const replacer = (x) => repl[alpha.indexOf(x)];
