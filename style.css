@@ -224,12 +224,6 @@ textarea {
     cursor: crosshair;
 }
 
-textarea:hover {
-    -ms-transform: scale(1.02);
-    -webkit-transform: scale(1.02);
-    transform: scale(1.02);
-}
-
 select {
     background: var(--decryptBtnBack);
     color: #fff;
@@ -399,14 +393,18 @@ a:hover {
     transform: scale(1.23);
 }
 
+
 @media (width <=800px) {
+    body {
+        overflow: visible;
+    }
     .content {
         flex-direction: column;
         flex-shrink: 1;
     }
 
     .nav {
-        margin-bottom: 25%;
+        margin-bottom: 15%;
         max-width: 98vw;
     }
 
