@@ -16,7 +16,7 @@
 
 body {
     color: white;
-    background: url(Images/milad-fakurian-1RWMfvv2UW4-unsplash.jpg) center no-repeat fixed;
+    background: url(Images/milad-fakurian-1RWMfvv2UW4-unsplashweb.webp) center no-repeat fixed;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -204,7 +204,6 @@ textarea {
     width: 35vw;
     background: var(--txtAreaBack);
     color: white;
-    /* background: var(--txtAreaBack) padding-box, linear-gradient(to left, rgb(12, 32, 46), rgb(142, 52, 145)) border-box; */
     border-radius: 8px;
     border: 3px solid transparent;
     margin: 5px;
@@ -404,13 +403,13 @@ a:hover {
     }
 
     .nav {
-        margin-bottom: 15%;
+        margin-bottom: 5%;
         max-width: 98vw;
     }
 
     .encrypt,
     .decrypt {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 
     .switchEnc {
@@ -419,7 +418,7 @@ a:hover {
 
     textarea {
         width: 95vw;
-        height: 30vh;
+        height: 25vh;
     }
 
     #encrypter-select,
@@ -428,8 +427,7 @@ a:hover {
         width: 120px;
     }
 
-    .how,
-    .logo {
+    .how{
         transform: scale3d(0.8, 0.8, 1);
     }
 
@@ -450,7 +448,7 @@ a:hover {
     }
 
     .footer {
-        margin-top: 20%;
+        margin-top: 5%;
     }
 }
 
