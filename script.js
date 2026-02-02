@@ -80,14 +80,14 @@ const dayNames = ["Sunday", "Monday", "Tuesday", 'Wednesday', 'Thursday', 'Frida
 const timeFormat = `${dayNames[day]} ${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
 
 
-//Shows inputOne if Vigenere cipher or Alternating split is selected 
+//Shows inputOne if Vigenere cipher or `something else([*for possible updates])` is selected 
 document.body.addEventListener('mousemove', () => {
-    encryptSelect.value === 'Vigenere' || encryptSelect.value === 'Alternating split' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
+    encryptSelect.value === 'Vigenere' || encryptSelect.value === '*' ? inputOne.style.display = 'block' : inputOne.style.display = 'none';
 });
 
-//Shows inputTwo if Vigenere cipher or Alternating split is selected 
+//Shows inputTwo if Vigenere cipher or `something else([*for possible updates])` is selected 
 document.body.addEventListener('mousemove', () => {
-    decryptSelect.value === 'Vigenere' || decryptSelect.value === 'Alternating split' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
+    decryptSelect.value === 'Vigenere' || decryptSelect.value === '*' ? inputTwo.style.display = 'block' : inputTwo.style.display = 'none';
 })
 
 
@@ -143,7 +143,6 @@ const handleEncryption = () => {
     if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-S') encryptOut.innerHTML = `${rav_s(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
-    else if (encryptSelect.value === 'Alternating split') encryptOut.innerHTML = `${encryptAltSplit(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'Substitution') encryptOut.innerHTML = `${encryptSubstitution(encryptTextBox.value)}\n\n[Created: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'Multi six') encryptOut.innerHTML = `${encodeMultSix(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'Vigenere') encryptOut.innerHTML = `${encryptVigenere(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -151,7 +150,7 @@ const handleEncryption = () => {
 }
 encryptButton.onclick = handleEncryption;
 
-//Changes input one and/or input two value to string if Vigenere cipher is selected because Alternating split works only with numbers as a key
+//Changes input one and/or input two value to string if Vigenere cipher is selected because some ciphers works only with numbers as a key
 // and Vigenere cipher works only with strings as a keys
 const changeInputValue = () => {
     if (encryptSelect.value === 'Vigenere') {
@@ -178,7 +177,6 @@ const handleDecryption = () => {
     if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-S') decryptOut.innerHTML = `${rav_sDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
-    else if (decryptSelect.value === 'Alternating split') decryptOut.innerHTML = `${decryptAltSplit(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'Substitution') decryptOut.innerHTML = `${decryptSubstitution(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'Multi six') decryptOut.innerHTML = `${decodeMultSix(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'Vigenere') decryptOut.innerHTML = `${decryptVigenere(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -206,33 +204,6 @@ function rot13decrypter(str) {
 };
 
 
-//Alternating split encryption handler
-function encryptAltSplit(text, n) {
-    n = inputOne.value;
-    if (n <= 0 || n > 100) {
-        alert('Key have to be a number between 1 and 100! Please enter a valid key.');
-        return;
-    };
-    for (let i = 0; i < n; i++) {
-        text = text && text.replace(/.(.|$)/g, '$1') + text.replace(/(.)./g, '$1')
-    }
-    return text;
-};
-
-//Alternating split decryption handler
-function decryptAltSplit(text, n) {
-    n = inputTwo.value;
-    if (n <= 0 || n > 100) {
-        alert('Key have to be a number between 1 and 100! Please enter a valid key.');
-        return;
-    };
-    let l = text && text.length / 2 | 0
-    for (let i = 0; i < n; i++) {
-        text = text.slice(l).replace(/./g, (_, i) => _ + (i < l ? text[i] : ''))
-    }
-    return text;
-}
-
 //Substitution encryption handler
 function encryptSubstitution(str) {
     return str.replace(/./g, x => x.charCodeAt(0) + 58);
@@ -253,7 +224,8 @@ function decodeMultSix(str) {
     return str.replace(/[\\#,$~%.'":*?<>\d\w]/gi, '').split('').map(x => x.charCodeAt(str) / 6).map(x => String.fromCharCode(x)).join('');
 }
 
-//*HELPER FUNCTIONS
+
+//*HELPER FUNCTIONS FOR VIGENERE
 
 //Checks if letter is uppercase 
 const isUpperCase = (letter) => {
