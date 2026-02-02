@@ -162,7 +162,7 @@ nav ul .how {
     transform: rotate(-25deg) translateX(-45px);
 }
 
-/* Animations delays for textareas */
+/* Animation delays */
 .txt-area-one{
     animation-delay: .2s;
 }
