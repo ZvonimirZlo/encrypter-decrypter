@@ -75,9 +75,11 @@ const minutes = time.getMinutes();
 const secs = time.getSeconds();
 
 const dayNames = ["Sunday", "Monday", "Tuesday", 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const dateMonthYear = [date, month, year].map(x => x < 9 ? '0' + x : x).join('.');
+const hoursMinutesSeconds = [hours, minutes, secs].map(x => x < 9 ? '0' + x : x).join(':');
 
 //Time format 
-const timeFormat = `${dayNames[day]} ${date}.${month}.${year} ${hours}:${minutes}:${secs}`;
+const timeFormat = `${dayNames[day]}, ${dateMonthYear}, ${hoursMinutesSeconds}`;
 
 
 //Shows inputOne if Vigenere cipher or `something else([*for possible updates])` is selected 
@@ -151,7 +153,7 @@ const handleEncryption = () => {
 encryptButton.onclick = handleEncryption;
 
 //Changes input one and/or input two value to string if Vigenere cipher is selected because some ciphers works only with numbers as a key
-// and Vigenere cipher works only with strings as a keys
+// and Vigenere cipher works only with strings as keys
 const changeInputValue = () => {
     if (encryptSelect.value === 'Vigenere') {
         inputOne.setAttribute('type', 'text');
@@ -186,6 +188,10 @@ decryptButton.onclick = handleDecryption;
 
 decryptSelect.onclick = changeInputValue;
 
+
+
+// ----**CIPHERS**---
+// ==================
 
 // ROT 13 encryption handler
 function rot13encrypter(str) {
