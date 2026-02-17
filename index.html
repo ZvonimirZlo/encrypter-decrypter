@@ -16,9 +16,9 @@
     <nav class="nav">
         <ul>
             <li>
-                <img src="Images/logo-small.png" class="logo animate__animated animate__bounce animate__delay-.5s"
+                <img src="Images/logo-small.png" class="logo animate__animated animate__bounce animate__delay-3s"
                     alt="logo image">
-                <button class="how animate__animated animate__bounce animate__delay-3s" id="descBtn"><span>How it
+                <button class="how" id="descBtn"><span>How it
                         works?</span></button>
                 <div name="description" id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Exercitationem debitis, minima quia reprehenderit et quis minus aliquam delectus, consectetur,
@@ -116,15 +116,16 @@
 
             <!-- Copy, paste, delete buttons -->
             <div class="buttons-three copy_paste animate__animated animate__fadeInDown">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!">
+                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!"
+                        id="delete_from_area_for_decryption">
                 </button>
                 <button class="copy-paste"><img
                         src="Images/cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png"
-                        alt="copy button" title="Copy!">
+                        alt="copy button" title="Copy!" id="copy_text_from_area_for_decryption">
                 </button>
                 <button class="copy-paste"><img
                         src="Images/cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
-                        alt="paste button" title="Paste!">
+                        alt="paste button" title="Paste!" id="paste_text_in_encryption_box">
                 </button>
             </div>
             <!-- Decrypted output box -->
@@ -133,7 +134,8 @@
 
             <!-- Delete button -->
             <div class="buttons-four copy_paste animate__animated animate__fadeInDown animate">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!">
+                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!"
+                        id="delete_text_from_decrypted">
                 </button>
             </div>
         </section>

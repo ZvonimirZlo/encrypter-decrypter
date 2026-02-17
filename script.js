@@ -21,38 +21,76 @@ const pasteInEncryptionTxtBox = document.getElementById('paste-encryption');
 const deleteEncryptionInputText = document.getElementById('delete-encryption-input');
 const copyFromEncryptedTextBox = document.getElementById('copy-from-encrypted');
 const deleteEncryptedText = document.getElementById('delete-encryped-text');
+const pasteInBoxForDecryption = document.getElementById('paste_text_in_encryption_box');
+const deleteTextFromBoxForDecryption = document.getElementById('delete_from_area_for_decryption');
+const copyFromAreaForDecryption = document.getElementById('copy_text_from_area_for_decryption');
+const deleteTextFromDecrypted = document.getElementById('delete_text_from_decrypted');
 
-//Paste text in encryption text box
+//**ENCRYPTION TEXTAREA TEXT HANDLERS
+
+//Paste text in encryption text box handler
 const pasteEncryptionText = async () => {
     navigator.clipboard.readText()
         .then((clipText) => (encryptTextBox.value = clipText))
         .catch(err => console.error(err))
 }
+//Paste text in textarea for encryption 
+pasteInEncryptionTxtBox.onclick = pasteEncryptionText;
 
-//Encrypted text copy handler
+//Deletes text from textarea for encryption
+deleteEncryptionInputText.addEventListener('click', async () => {
+    encryptTextBox.value = ''
+})
+
+//**ENCRYPTED TEXTAREA HANDLERS
+
+//Encrypted textarea copy handler
 const copyEncryptedText = async () => {
     const text = encryptOut.value;
     navigator.clipboard.writeText(text.slice(0, text.indexOf('Created')))
         .then(() => alert('Copied!'))
         .catch(err => console.error(err))
 }
+// Copy text from encrypted text box
+copyFromEncryptedTextBox.onclick = copyEncryptedText;
 
-//Deletes text in encryption text box
-deleteEncryptionInputText.addEventListener('click', async () => {
-    encryptTextBox.value = ''
-})
-
-//Deletes encrypted text
+//Deletes text from encrypted text textarea
 deleteEncryptedText.addEventListener('click', async () => {
     encryptOut.innerHTML = ''
 })
 
-//Paste in encryped text box
-pasteInEncryptionTxtBox.onclick = pasteEncryptionText;
+//**TEXTAREA FOR DECRYPTION HANDLERS
+
+//Paste text in textarea for decryption
+const pasteTextInBoxForDecryption = async () => {
+    navigator.clipboard.readText()
+        .then((clipText) => (decryptTextBox.value = clipText))
+        .catch(err => console.error(err))
+}
+pasteInBoxForDecryption.onclick = pasteTextInBoxForDecryption;
+
+//Deletes text from textarea for decryption
+deleteTextFromBoxForDecryption.addEventListener('click', () => {
+    decryptTextBox.value = ''
+    
+});
+
+//Copy text from textarea for decryption
+const copyAreaForDecryption= async () => {
+    const text = decryptTextBox.value;
+    navigator.clipboard.writeText(text)
+        .then(() => alert('Copied!'))
+        .catch(err => console.error(err))
+}
+
+copyFromAreaForDecryption.onclick = copyAreaForDecryption;
 
 
-// Copy text from encrypted text box
-copyFromEncryptedTextBox.onclick = copyEncryptedText;
+//DECRYPTED TEXTAREA HANDLER
+deleteTextFromDecrypted.addEventListener('click', () => {
+    decryptOut.innerHTML = ''
+});
+
 
 //Prevents drag and dropp block
 encryptTextBox.addEventListener("dragover", (event) => {
@@ -63,6 +101,7 @@ decryptTextBox.addEventListener("dragover", (event) => {
     event.dataTransfer.dropEffect = "move";
 });
 
+//**DATE
 
 //Date object and instances required to create correct time format
 const time = new Date();
@@ -189,7 +228,7 @@ decryptButton.onclick = handleDecryption;
 decryptSelect.onclick = changeInputValue;
 
 
-
+// ==================
 // ----**CIPHERS**---
 // ==================
 

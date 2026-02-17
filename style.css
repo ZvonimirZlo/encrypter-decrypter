@@ -24,7 +24,7 @@ body {
     min-height: 100vh;
     max-width: 100vw;
     font-family: Arial, Helvetica, sans-serif;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .content {
@@ -163,36 +163,36 @@ nav ul .how {
 }
 
 /* Animation delays */
-.txt-area-one{
+.txt-area-one {
     animation-delay: .2s;
 }
 
-.txt-area-two{
+.txt-area-two {
     animation-delay: .4s;
 }
 
-.txt-area-three{
+.txt-area-three {
     animation-delay: .6s;
 }
 
-.txt-area-four{
+.txt-area-four {
     animation-delay: .8s;
 }
 
 .buttons-one {
-   animation-delay: 1.2s; 
+    animation-delay: 1.2s;
 }
 
 .buttons-two {
-   animation-delay: 1.4s; 
+    animation-delay: 1.4s;
 }
 
 .buttons-three {
-   animation-delay: 1.6s; 
+    animation-delay: 1.6s;
 }
 
 .buttons-four {
-   animation-delay: 1.8s; 
+    animation-delay: 1.8s;
 }
 
 button:hover:before {
@@ -228,7 +228,7 @@ select {
     color: #fff;
     border-radius: 24px;
     height: 33px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #decrypter-select {
@@ -245,7 +245,8 @@ select option {
 }
 
 textarea::placeholder {
-    color: #03fce7b9;;
+    color: #03fce7b9;
+    ;
     opacity: .8;
 }
 
@@ -382,7 +383,7 @@ a:hover {
     margin-bottom: 10px;
     float: right;
     padding-left: 5px;
-    cursor:pointer;
+    cursor: pointer;
     transition: transform .2s;
 }
 
@@ -393,10 +394,11 @@ a:hover {
 }
 
 
-@media (width <=800px) {
+@media (width <=1000px) {
     body {
         overflow: visible;
     }
+
     .content {
         flex-direction: column;
         flex-shrink: 1;
@@ -427,7 +429,7 @@ a:hover {
         width: 120px;
     }
 
-    .how{
+    .how {
         transform: scale3d(0.8, 0.8, 1);
     }
 
