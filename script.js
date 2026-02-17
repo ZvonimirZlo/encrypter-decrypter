@@ -179,7 +179,7 @@ const showHideMethodEnc = () => {
 
 //**ENCRYPTION HANDLER**
 const handleEncryption = () => {
-    if (encryptTextBox.value === '') alert('Nothing to encrypt, enter text in encryption text box!')
+    if (encryptTextBox.value === '') alert('Nothing to encrypt, enter text in encryption text box.')
     if (encryptSelect.value === 'option') alert('Please select encryption method!')
     if (encryptSelect.value === 'RAV-ESO') encryptOut.innerHTML = `${ravEso(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (encryptSelect.value === 'RAV-N') encryptOut.innerHTML = `${rav_n(encryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -213,7 +213,7 @@ encryptSelect.onclick = changeInputValue;
 
 // **DECRYPTION HANDLER**
 const handleDecryption = () => {
-    if (decryptTextBox.value === '') alert('Nothing to decrypt, enter text in decryption text box!')
+    if (decryptTextBox.value === '') alert('Nothing to decrypt, enter text in decryption text box.')
     if (decryptSelect.value === 'option') alert('Please select decryption method!');
     if (decryptSelect.value === 'RAV-ESO') decryptOut.innerHTML = `${ravEsoDec(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
     else if (decryptSelect.value === 'RAV-N') decryptOut.innerHTML = `${ravDec_n(decryptTextBox.value)}\n\nCreated: ${timeFormat}, ${showHideMethodEnc()}`;
@@ -311,7 +311,7 @@ function mod(n, m) {
 function encryptVigenere(text, key) {
     key = inputOne.value.split('').filter(x => x.match(/[a-z]/gi)).join('');
 
-    if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character! Please enter a valid key.');
+    if (!key.match(/[a-zA-Z]/g)) alert('The key must be a word or letter containing only alphabetic characters.');
     let cypher = "";
     for (let i = 0, j = 0; i < text.length; i++) {
         let currentLetter = text[i];
@@ -336,7 +336,7 @@ function decryptVigenere(enc, key) {
 
     key = inputTwo.value.split('').filter(x => x.match(/[a-z]/gi)).join('').replace(/\s+/g, '');
 
-    if (!key.match(/[a-zA-Z]/g)) alert('Key have to be a alphabet word longer than one character! Please enter a valid key.');
+    if (!key.match(/[a-zA-Z]/g)) alert('The key must be a word or letter containing only alphabetic characters.');
 
     let decrypted = "";
     let j = 0;
