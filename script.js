@@ -137,7 +137,7 @@ const showHideTextBox = () => {
     description.style.display === "none" ? description.style.display = "block" : description.style.display = "none";
 }
 
-//Shows only encrypt section on smaller screens
+//Shows only encrypt section on small screens
 const showEncryptFunction = () => {
     encryptSection.style.display = 'block';
     decryptSection.style.display = 'none';
@@ -145,7 +145,7 @@ const showEncryptFunction = () => {
     showDecrypt.style.background = 'linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b)'
 }
 
-//Shows only decrypt section on smaller screens
+//Shows only decrypt section on small screens
 const showDecryptFunction = () => {
     decryptSection.style.display = 'block';
     encryptSection.style.display = 'none';

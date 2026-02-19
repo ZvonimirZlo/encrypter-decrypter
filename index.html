@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Author: ZvonimirZlo, Application for encrypting and decrypting text.">
     <link rel="stylesheet" href="style.css">
-    <title>Encrypter</title>
+    <title>Zhypr</title>
     <link rel="icon" type="image/x-icon" href="Images/logo-small.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -41,15 +44,21 @@
                         <li><strong>Process:</strong> Click the 'ENCRYPT' button to secure your text.</li>
                         <li><strong>Copy & Save:</strong> Click the 'Copy' button. A browser alert will confirm the text
                             is saved to your clipboard.</li>
-                            <li><strong>Decrypt:</strong> To unlock a message, paste the ciphertext, ensure the correct method is selected, and click 'DECRYPT'.</li>
-                            <li>Enjoy :)</li>
+                        <li><strong>Decrypt:</strong> To unlock a message, paste the ciphertext, ensure the correct
+                            method is selected, and click 'DECRYPT'.</li>
+                        <li><strong>Enjoy :)</strong></li>
                     </ol>
                 </div>
             </li>
         </ul>
     </nav>
 
-    <h1 class="headline animate__animated animate__fadeInDown">Encrypter Decrypter</h1>
+    <div class="headline animate__animated animate__fadeInDown">
+        <h1><span class="i">Z</span>hypr</h1>
+        <br>
+        <p>encrypter</p><span>-</span>
+        <p>decrypter</p>
+    </div>
 
     <main class="content" id="form">
 
@@ -90,12 +99,12 @@
 
             <!-- Paste, delete buttons -->
             <div class="buttons-one copy_paste animate__animated animate__fadeInDown">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!"
-                        id="delete-encryption-input">
+                <button class="copy-paste"><img src="Images/delete.png" title="Delete!" id="delete-encryption-input"
+                        aria-label="delete button">
                 </button>
                 <button class="copy-paste" id="paste-encryption"><img
                         src="Images/cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
-                        alt="paste button" title="Paste!">
+                        aria-label="paste button" title="Paste!">
                 </button>
             </div>
             <!-- Encrypted output text box -->
@@ -103,12 +112,12 @@
                 class="txt-area-two animate__animated animate__fadeInLeft"></textarea>
             <!-- Copy, delete buttons -->
             <div class="buttons-two copy_paste animate__animated animate__fadeInDown">
-                <button class="copy-paste" id="delete-encryped-text"><img src="Images/delete.png" alt="delete button"
-                        title="Delete!">
+                <button class="copy-paste" id="delete-encryped-text"><img src="Images/delete.png"
+                        aria-label="delete button" title="Delete!">
                 </button>
                 <button class="copy-paste" id="copy-from-encrypted"><img
                         src="Images/cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png"
-                        alt="copy button" title="Copy!">
+                        aria-label="copy button" title="Copy!">
                 </button>
             </div>
         </section>
@@ -138,16 +147,18 @@
 
             <!-- Copy, paste, delete buttons -->
             <div class="buttons-three copy_paste animate__animated animate__fadeInDown">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!"
-                        id="delete_from_area_for_decryption">
+                <button class="copy-paste"><img src="Images/delete.png" title="Delete!"
+                        id="delete_from_area_for_decryption" aria-label="delete button">
+
+
                 </button>
                 <button class="copy-paste"><img
                         src="Images/cut-copy-and-paste-copying-computer-icons-text-choose-kind-fb34445d51fd0f4d0fbdb9836aff2d0c.png"
-                        alt="copy button" title="Copy!" id="copy_text_from_area_for_decryption">
+                        aria-label="copy button" title="Copy!" id="copy_text_from_area_for_decryption">
                 </button>
                 <button class="copy-paste"><img
                         src="Images/cut-paste-computer-icons-clipboard-manager-paste-746668c981dcba485ceb5eb58258da11.png"
-                        alt="paste button" title="Paste!" id="paste_text_in_encryption_box">
+                        aria-label="paste button" title="Paste!" id="paste_text_in_encryption_box">
                 </button>
             </div>
             <!-- Decrypted output box -->
@@ -156,14 +167,14 @@
 
             <!-- Delete button -->
             <div class="buttons-four copy_paste animate__animated animate__fadeInDown animate">
-                <button class="copy-paste"><img src="Images/delete.png" alt="delete button" title="Delete!"
-                        id="delete_text_from_decrypted">
+                <button class="copy-paste"><img src="Images/delete.png" title="Delete!" id="delete_text_from_decrypted"
+                        aria-label="delete button">
                 </button>
             </div>
         </section>
     </main>
     <!-- Footer -->
-    <footer class="footer animate__animated animate__fadeInDown animate__delay-2s">© Encrypter Decrypter by ZvonimirZlo
+    <footer class="footer animate__animated animate__fadeInDown animate__delay-2s">© Zhypr by ZvonimirZlo
         <a href="https://github.com/ZvonimirZlo" rel='noopener noreferer' aria-label="Link to Github">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" viewBox="0 0 16 16"
                 class="svg">
