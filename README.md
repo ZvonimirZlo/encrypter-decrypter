@@ -114,23 +114,6 @@ I am currently working on expanding the app's capabilities. The following featur
 - [ ] **Additional Algorithms**
 - [ ] **QR Code Integration:** Generate a shareable QR code of the ciphertext that can be scanned and decrypted on the fly.
 
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! 
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-
-1. **Fork** the Project
-2. **Create** your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. **Commit** your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** to the Branch (`git push origin feature/AmazingFeature`)
-5. **Open** a Pull Request
-
-### How you can help:
-* Improving the math logic for existing ciphers.
-* Adding new encryption methods (e.g., Base64, Morse Code).
-* Fixing UI bugs or enhancing responsiveness.
-* Refactoring the JavaScript for better performance.
   
 ## Setup
   - open live demo app on the link above
