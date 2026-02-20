@@ -26,17 +26,15 @@
 - ## How It Works
    #### How to Use This App
     <ul>
-                        <li><strong>Input Text:</strong> Type or paste your message into the text area.</li>
-                        <li><strong>Select Method:</strong> Choose your desired algorithm from the 'Method options'
-                            dropdown.</li>
-                        <li><strong>Privacy Toggle:</strong> Use the slider to show or hide the selected method for
-                            extra security (method is hidden by default).</li>
-                        <li><strong>Process:</strong> Click the 'ENCRYPT' button to secure your text.</li>
-                        <li><strong>Copy & Save:</strong> Click the 'Copy' button. A browser alert will confirm the text
-                            is saved to your clipboard.</li>
-                        <li><strong>Decrypt:</strong> To unlock a message, paste the ciphertext, ensure the correct
-                            method is selected, and click 'DECRYPT'.</li>
-                        <li><strong>Enjoy :)</strong></li>
+    <li><strong>Input Text:</strong> Type or paste your message into the text area.</li>
+    <li><strong>Select Method:</strong> Choose your desired algorithm from the 'Method options'
+    dropdown.</li>
+    <li><strong>Privacy Toggle:</strong> Use the slider to show or hide the selected method for
+    extra security (method is hidden by default).</li>
+    <li><strong>Process:</strong> Click the 'ENCRYPT' button to secure your text.</li>
+    <li><strong>Copy & Save:</strong> Click the 'Copy' button. A browser alert will confirm the text is saved to your clipboard.</li>
+    <li><strong>Decrypt:</strong> To unlock a message, paste the ciphertext, ensure the correct method is selected, and click 'DECRYPT'.</li>
+    <li><strong>Enjoy :)</strong></li>
     </ul>
 
    Some enryption methods require a key for encoding and the same key for decoding text. 
