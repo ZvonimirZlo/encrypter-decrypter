@@ -72,11 +72,11 @@ pasteInBoxForDecryption.onclick = pasteTextInBoxForDecryption;
 //Deletes text from textarea for decryption
 deleteTextFromBoxForDecryption.addEventListener('click', () => {
     decryptTextBox.value = ''
-    
+
 });
 
 //Copy text from textarea for decryption
-const copyAreaForDecryption= async () => {
+const copyAreaForDecryption = async () => {
     const text = decryptTextBox.value;
     navigator.clipboard.writeText(text)
         .then(() => alert('Copied!'))

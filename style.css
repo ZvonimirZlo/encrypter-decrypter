@@ -52,7 +52,7 @@ body {
     letter-spacing: 7px;
 }
 
-.i {
+.zifra {
     font-family: "Tilt Prism", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -489,18 +489,19 @@ img {
         margin-top: -5px;
     }
 
-.i{
-    font-size: 27px;
-}
+    .zifra {
+        font-size: 27px;
+    }
+
     .footer {
         margin-top: 5%;
         position: relative;
     }
 }
 
-    @media (min-width: 1001px) and (max-width: 1600px) {
-        textarea {
-            width: 47dvw;
-            height: 25dvh;
-        }
+@media (min-width: 1001px) and (max-width: 1600px) {
+    textarea {
+        width: 47dvw;
+        height: 25dvh;
     }
+}
