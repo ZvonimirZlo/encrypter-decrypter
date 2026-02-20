@@ -42,6 +42,7 @@ This app uses multiple encryption methods to secure your text. The date and time
 5. **Copy & Save:** Use the **Copy** button to save to your clipboard.
 6. **Decrypt:** Paste the ciphertext, select the matching method, and click **DECRYPT**.
 
+### Live Demo: [Zifr@](https://zifr.netlify.app/)
 ---
 
    Some enryption methods require a key for encoding and the same key for decoding text. 
@@ -103,6 +104,7 @@ function rot13encrypter(str) {
     return str.replace(/[a-zA-Z0-9]/g, handleEncryption);
 };
 ```
+
 
 ## Technologies
    - `HTML5`
