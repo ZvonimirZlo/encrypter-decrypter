@@ -24,10 +24,10 @@ This app uses multiple encryption methods to secure your text. The date and time
 
 
 ## Screenshots
-<img width="500" alt="Screenshot1" src="https://github.com/user-attachments/assets/5034ffe2-1b62-4671-adad-4a22d08f660c" />
+<img alt="Screenshot1" src="https://github.com/user-attachments/assets/5034ffe2-1b62-4671-adad-4a22d08f660c" />
 
 
-<img width="500" alt="Screenshot2" src="https://github.com/user-attachments/assets/867f9826-db5a-4297-a892-3588f9aae746" />
+<img alt="Screenshot2" src="https://github.com/user-attachments/assets/867f9826-db5a-4297-a892-3588f9aae746" />
 
 
 <img width="400" alt="Screenshot Mob" src="https://github.com/user-attachments/assets/52137e01-1be7-4e21-a076-20b4bcab1ce7" />
