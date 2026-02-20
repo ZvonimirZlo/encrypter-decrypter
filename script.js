@@ -273,24 +273,10 @@ function decodeMultSix(str) {
 //*HELPER FUNCTIONS FOR VIGENERE
 
 //Checks if letter is uppercase 
-const isUpperCase = (letter) => {
-    var l = letter.charCodeAt();
-    if (l >= 65 && l <= 90) {
-        return true;
-    } else {
-        return false;
-    }
-};
+const isUpperCase = (l) => /[A-Z]/.test(l);
 
 //Checks if letter is lowercase
-const isLowerCase = (letter) => {
-    var l = letter.charCodeAt();
-    if (l >= 97 && l <= 122) {
-        return true;
-    } else {
-        return false;
-    }
-};
+const isLowerCase = (l) => /[a-z]/.test(l);
 
 //Checks if input value is letter
 function isLetter(letter) {
