@@ -1,39 +1,44 @@
 # Zyfr@ Encrypter-Decrypter
 
-- ## Table of Content:
+## Table of Contents:
 
 - [About The App](#about-the-app)
-- [How It Works](#about-the-app)
 - [Screenshots](#screenshots)
+- [How It Works](#how-it-works)
 - [Technologies](#technologies)
 - [Setup](#setup)
 
-- ## About The App
-  Encryption is the process that converts the original representation of the information,
-  known as <strong>plaintext</strong>, into an alternative form known as
-  <strong>ciphertext</strong>.
-  <br>
-  Decryption is the reverse process.
-  <br>
-  This app uses multiple encryption methods to encrypt and decrypt your text. The date and time of creation are shown at the bottom of the message.
+## About The App
+## 🚀 Features
+- **Multiple Algorithms.**
+- **Real-time Processing:** Encryption and decryption happen instantly.
+- **Copy to Clipboard:** One-click copying for easy sharing.
+- **Privacy Mode:** Toggle visibility of the encryption method to keep onlookers guessing.
+- **Timestamping:** Every message includes a "Created at" metadata footer.
+
+Encryption is the process that converts the original representation of the information, known as **plaintext**, into an alternative form known as **ciphertext**.
+
+Decryption is the reverse process.
+
+This app uses multiple encryption methods to secure your text. The date and time of creation are automatically appended to the bottom of the message.
 
 
-- ## Screenshots
+## Screenshots
    <p>
    <img src='' width="400">
    </p>
   
-- ## How It Works
-   #### How to Use This App:
-    <ul>
-    <li><strong>Input Text:</strong> Type or paste your message into the text area.</li>
-    <li><strong>Select Method:</strong> Choose your desired algorithm from the 'Method options' dropdown.</li>
-    <li><strong>Privacy Toggle:</strong> Use the slider to show or hide the selected method for extra security (method is hidden by default).</li>
-    <li><strong>Process:</strong> Click the 'ENCRYPT' button to secure your text.</li>
-    <li><strong>Copy & Save:</strong> Click the 'Copy' button. A browser alert will confirm the text is saved to your clipboard.</li>
-    <li><strong>Decrypt:</strong> To unlock a message, paste the ciphertext, ensure the correct method is selected, and click 'DECRYPT'.</li>
-    <li><strong>Enjoy :)</strong></li>
-    </ul>
+## How It Works
+
+### How to Use This App:
+1. **Input Text:** Type or paste your message into the text area.
+2. **Select Method:** Choose your desired algorithm from the 'Method options' dropdown.
+3. **Privacy Toggle:** Use the slider to show or hide the selected method for extra security.
+4. **Process:** Click **ENCRYPT** to secure your text.
+5. **Copy & Save:** Use the **Copy** button to save to your clipboard.
+6. **Decrypt:** Paste the ciphertext, select the matching method, and click **DECRYPT**.
+
+---
 
    Some enryption methods require a key for encoding and the same key for decoding text. 
    For example the Vigenère cipher is a method of encrypting alphabetic text where each letter of the plaintext is encoded with a different Caesar cipher, 
@@ -42,27 +47,9 @@
 ```
 //HELPER FUNCTIONS 
 
-//Checks if letter is uppercase 
-const isUpperCase = (letter) => {
-    const l = letter.charCodeAt();
-    if (l >= 65 && l <= 90) {
-        return true;
-    } else {
-        return false;
-    }
-};
+const isUpperCase = (l) => /[A-Z]/.test(l);
+const isLowerCase = (l) => /[a-z]/.test(l);
 
-//Checks if letter is lowercase
-const isLowerCase = (letter) => {
-    const l = letter.charCodeAt();
-    if (l >= 97 && l <= 122) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
-//Checks if input value is letter
 function isLetter(letter) {
     if (isLowerCase(letter) || isUpperCase(letter)) {
         return true;
@@ -71,7 +58,6 @@ function isLetter(letter) {
     }
 }
 
-//Modulo
 function mod(n, m) {
     return ((n % m) + m) % m;
 }
@@ -100,7 +86,7 @@ function mod(n, m) {
   return cypher;
 }
 ```
-Caesar cypher is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions along the alphabet (in this case 13).
+Caesar cypher is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions along the alphabet (ROT13 uses a shift of 13.).
 Caesar cypher (Rot 13) JavaScript implementation:
 
 
@@ -114,10 +100,13 @@ function rot13encrypter(str) {
 };
 ```
 
-- ## Technologies
-  `Css`, `Html`, `JavaScript` and `Animate.css`.
-
-- ## Setup
-  - open live demo app on the link above, or:
-  - download or clone the repository
-  - open it with Live Server
+## Technologies
+   - `HTML5`
+   - `CSS3`
+   - `JavaScript`
+   - `Animate.css`
+  
+## Setup
+  - open live demo app on the link above
+  - OR Clone the repository
+  - open `index.html` with Live Server
