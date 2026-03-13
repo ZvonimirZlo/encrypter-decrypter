@@ -45,6 +45,20 @@ This app uses multiple encryption methods to secure your text. The date and time
 ### Live Demo: [Zyfr@](https://zifr.netlify.app/)
 ---
 
+### 🧠 Logic Behind the Algorithms
+
+#### Custom Method: RAV-ESO
+Unlike standard libraries, I developed **RAV-ESO** to provide a multi-layered masking effect. The process involves:
+1. Converting text to **ASCII values**.
+2. Translating values into **Roman Numerals**.
+3. Mapping Roman characters into an **esoteric symbol set** (`][}+)(&`).
+4. Reversing the final string for added complexity.
+
+#### The Vigenère Implementation
+This method uses a keyword to shift letters. My implementation ensures:
+- **Case preservation:** Uppercase letters stay uppercase.
+- **Symbol skipping:** Spaces and punctuation are not encrypted, keeping the message structure intact.
+
    Some enryption methods require a key for encoding and the same key for decoding text. 
    For example the Vigenère cipher is a method of encrypting alphabetic text where each letter of the plaintext is encoded with a different Caesar cipher, 
    whose increment is determined by the corresponding letter of another text, the key. Below is the JavaScript implementation of Vigenere cypher encryption:
